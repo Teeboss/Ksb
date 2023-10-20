@@ -6,11 +6,18 @@ use DateTime;
 use DateTimeZone;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class footballController extends Controller
 {
     //
+
+
+    public static function lastYear() {
+        return date("Y");
+    }
+
     public function loadGames()
     {
 
@@ -55,29 +62,75 @@ class footballController extends Controller
             ";
         } else {
             foreach ($responses->response as $team) {
-                # code...
+            echo self::echoGames($team);
+            }
+        }
+    }
 
-                echo "       
-                <tr  class='pointers'>
-                    <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' colspan='2' class='boldFour fontSize10px'><img src='" . $team->league->flag  . "' alt='' class='wid8px'> " . $team->league->country . " | " . self::changeTimeZone($team->fixture->timezone, $team->fixture->date) . " <br> <span class='boldFive fontSize12px'>" . $team->teams->home->name . " vs " . $team->teams->away->name . "</span>
+
+    public static function echoGames($team) {
+        if (Auth::check()) {   
+                return "        
+                <div class='modal fade' id='staticBackdrop" . $team->fixture->id . "' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
+                <div class='modal-dialog'>
+                    <div class='modal-content'>
+                    <div class='modal-body'>
+                    <iframe src='/fixture/".$team->fixture->id . "/" . $team->league->id."' frameborder='0' style='width: 100%; height: 400px; border: none;'></iframe>
+                    </div>
+                    <div class='modal-footer'>
+                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <tr class='pointers' data-bs-toggle='modal' data-bs-target='#staticBackdrop" . $team->fixture->id . "'>
+                    <td colspan='2' class='boldFour fontSize10px' ><img src='" . $team->league->flag  . "' alt='' class='wid8px'> " . $team->league->country . " | " . self::changeTimeZone($team->fixture->timezone, $team->fixture->date) . " <br> <span class='boldFive fontSize12px'>" . $team->teams->home->name . " vs " . $team->teams->away->name . "</span>
                     </td>
-                    <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='boldFive fontSize12px bgRed'>" . self::callPrediction($team) . "</td>
+                    <td class='boldFive fontSize14px'>" . self::callPrediction($team) . "</td>
                     <td colspan='2' class='boldFive fontSize12px'>" . self::odd($team->fixture->id) . "</td>
                     <td>
-                        <div class=' wid70 wid100Mobile mx-auto'>
-                            <div class='d-flex align-items-center justify-content-between'>
-                                <div class='btn-group' style='border: solid #0f46dc 1px; border-radius: 25px; overflow: hidden;'>
-                                <a href='https://clcr.me/xsOTPT' class='btn' sytle='padding: 3px;'   target='_blank' ><img src='" . asset('icons/1xbet.png') . "' alt='' class='iconSmall'></a>
-                                <a href='https://clcr.me/xsOTPT' class='' style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;' target='_blank' > Bet Now</a>
-                                </div>
-                             <!--   <a href='https://paripesa.bet/solomonbet'><img src='" . asset('icons/paripasa.png') . "' alt=''></a>
-                                <a href='http://bit.ly/ZB-KingBets'><img src='" . asset('icons/zebet.png') . "' alt=''></a> -->
+                    <div class=' wid70 wid100Mobile mx-auto'>
+                        <div class='d-flex align-items-center justify-content-between'>
+                            <div class='d-flex justify-content-center'>
+                                <a href='https://www.betano.ng/' class='leftRa' sytle='padding: 3px;' ><img src='" . asset('icons/betano.png') . "' alt='' class='iconSmallLg' style='padding: 5px;'></a>
+                                <a href='https://www.betano.ng/' class='rightRa' style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;'> Bet Now</a>
                             </div>
                         </div>
                     </td>
                 </tr>
                ";
-            }
+        } else {
+            return   "        
+                <div class='modal fade' id='staticBackdrop" . $team->fixture->id . "' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
+                <div class='modal-dialog'>
+                    <div class='modal-content'>
+                    <div class='modal-body'>
+                    <iframe src='/fixture/".$team->fixture->id . "/" . $team->league->id."' frameborder='0' style='width: 100%; height: 400px; border: none;'></iframe>
+                    </div>
+                    <div class='modal-footer'>
+                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <tr class='pointers' data-bs-toggle='modal' data-bs-target='#loginModal'>
+                    <td colspan='2' class='boldFour fontSize10px' ><img src='" . $team->league->flag  . "' alt='' class='wid8px'> " . $team->league->country . " | " . self::changeTimeZone($team->fixture->timezone, $team->fixture->date) . " <br> <span class='boldFive fontSize12px'>" . $team->teams->home->name . " vs " . $team->teams->away->name . "</span>
+                    </td>
+                    <td class='boldFive fontSize14px'>" . self::callPrediction($team) . "</td>
+                    <td colspan='2' class='boldFive fontSize12px'>" . self::odd($team->fixture->id) . "</td>
+                    <td>
+                    <div class=' wid70 wid100Mobile mx-auto'>
+                        <div class='d-flex align-items-center justify-content-between'>
+                            <div class='d-flex justify-content-center'>
+                                <a href='https://www.betano.ng/' class='leftRa' sytle='padding: 3px;' ><img src='" . asset('icons/betano.png') . "' alt='' class='iconSmallLg' style='padding: 5px;'></a>
+                                <a href='https://www.betano.ng/' class='rightRa' style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;'> Bet Now</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+               ";
         }
     }
 
@@ -87,6 +140,7 @@ class footballController extends Controller
         $news = DB::table('news_uploads')->where('id', $postId)->first();
         return view('newsDetails', ['bannerLong' => $bannerLong, 'news' => $news]);
     }
+
     public static function loadLeagueGames($leagueId)
     {
         $curl = curl_init();
@@ -139,41 +193,22 @@ class footballController extends Controller
                         <td colspan='8' class='white'><img class='wid16px' src='" . $responses->response[0]->league->logo . "' alt=''> " . $responses->response[0]->league->country . ": " . $responses->response[0]->league->name . "</td>
                     </tr>
                     <tr class='boldFour'>
-                        <td colspan='4' class='fontSize10px'>Events</td>
-                        <td class='fontSize10px'>Tip</td>
-                        <td class='fontSize10px centerText'>Odd
+                        <td colspan='2' class='fontSize10px'>Events</td>
+                        <td class='boldFive fontSize10px'>Tip</td>
+                        <td colspan='2' class='fontSize10px centerText' >Odd
                         <div class='d-flex justify-content-between'>
                             <span>1</span>
                             <span>X</span>
                             <span>2</span>
                          </div>
                         </td>
-                        <td colspan='2'></td>
+                        <td class='boldFive fontSize10px text-center'>Booking</td>
                     </tr>
                 </thead>
                 <tbody>
                 ";
             foreach ($responses->response as $team) {
-                $gameUI .= "    
-                <tr  class='pointers'>
-                <td class='fontSize10px'>" . self::changeTimeZone($team->fixture->timezone, $team->fixture->date) . "</td>
-                <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->home->name . "</td>
-                <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='fontSize10px'>vs</td>
-                <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->away->name . "</td>
-                <td class='fontSize10px'>" . self::callPrediction($team) . "</td>
-                <td class='fontSize10px'>" . self::odd($team->fixture->id) . "</td>
-                <td colspan='2' class='fontSize10px'>
-                <div class=' wid70 wid100Mobile mx-auto'>
-                <div class='d-flex align-items-center justify-content-between'>
-                    <div class='btn-group' style='border: solid #0f46dc 1px; border-radius: 25px; overflow: hidden;'>
-                    <a href='https://clcr.me/xsOTPT' class='btn' sytle='padding: 3px;'  ><img src='" . asset('icons/1xbet.png') . "' alt='' class='iconSmall'></a>
-                    <a href='https://clcr.me/xsOTPT' class='' style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;'> Bet Now</a>
-                    </div>
-                 <!--   <a href='https://paripesa.bet/solomonbet'><img src='" . asset('icons/paripasa.png') . "' alt=''></a>
-                    <a href='http://bit.ly/ZB-KingBets'><img src='" . asset('icons/zebet.png') . "' alt=''></a> -->
-                </div>
-                </td>
-            </tr>";
+                $gameUI .= self::echoGames($team);
             }
             $gameUI .= "
             </tbody>
@@ -192,7 +227,7 @@ class footballController extends Controller
         //$lastYear = date('Y');
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api-football-v1.p.rapidapi.com/v3/fixtures?date=$today&league=61&season=$lastYear",
+            CURLOPT_URL => "https://api-football-v1.p.rapidapi.com/v3/fixtures?date=$today&league=61&season=".self::lastYear()."",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -229,26 +264,7 @@ class footballController extends Controller
             </tr>";
         } else {
             foreach ($responses->response as $team) {
-                echo "    
-                <tr  class='pointers'>
-                <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . self::changeTimeZone($team->fixture->timezone, $team->fixture->date) . "</td>
-                <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->home->name . "</td>
-                <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='fontSize10px'>vs</td>
-                <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->away->name . "</td>
-                <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . self::callPrediction($team) . "</td>
-                <td class='fontSize10px'>" . self::odd($team->fixture->id) . "</td>
-                <td class='fontSize10px'>
-                <div class=' wid70 wid100Mobile mx-auto'>
-                <div class='d-flex align-items-center justify-content-between'>
-                    <div class='btn-group' style='border: solid #0f46dc 1px; border-radius: 25px; overflow: hidden;'>
-                    <a href='https://clcr.me/xsOTPT' class='btn' sytle='padding: 3px;'  target='_blank' ><img src='" . asset('icons/1xbet.png') . "' alt='' class='iconSmall'></a>
-                    <a href='https://clcr.me/xsOTPT' class='' target='_blank'  style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;'> Bet Now</a>
-                    </div>
-                 <!--   <a href='https://paripesa.bet/solomonbet'><img src='" . asset('icons/paripasa.png') . "' alt=''></a>
-                    <a href='http://bit.ly/ZB-KingBets'><img src='" . asset('icons/zebet.png') . "' alt=''></a> -->
-                </div>
-                </td>
-            </tr>";
+                echo self::echoGames($team);
             }
         }
     }
@@ -296,7 +312,7 @@ class footballController extends Controller
         //$lastYear = date('Y');
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api-football-v1.p.rapidapi.com/v3/fixtures?date=$today&league=39&season=$lastYear",
+            CURLOPT_URL => "https://api-football-v1.p.rapidapi.com/v3/fixtures?date=$today&league=39&season=".self::lastYear()."",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -333,26 +349,7 @@ class footballController extends Controller
             </tr>";
         } else {
             foreach ($responses->response as $team) {
-                echo "    
-                <tr onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='pointers'>
-                <td class='fontSize10px'>" . self::changeTimeZone($team->fixture->timezone, $team->fixture->date) . "</td>
-                <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->home->name . "</td>
-                <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='fontSize10px'>vs</td>
-                <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->away->name . "</td>
-                <td class='fontSize10px'>" . self::callPrediction($team) . "</td>
-                <td class='fontSize10px'>" . self::odd($team->fixture->id) . "</td>
-                <td colspan='2' class='fontSize10px'>
-                <div class=' wid70 wid100Mobile mx-auto'>
-                <div class='d-flex align-items-center justify-content-between'>
-                    <div class='btn-group' style='border: solid #0f46dc 1px; border-radius: 25px; overflow: hidden;'>
-                    <a href='https://clcr.me/xsOTPT' class='btn' sytle='padding: 3px;' target='_blank' ><img src='" . asset('icons/1xbet.png') . "' alt='' class='iconSmall'></a>
-                    <a href='https://clcr.me/xsOTPT' class='' target='_blank'  style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;'> Bet Now</a>
-                    </div>
-                 <!--   <a href='https://paripesa.bet/solomonbet'><img src='" . asset('icons/paripasa.png') . "' alt=''></a>
-                    <a href='http://bit.ly/ZB-KingBets'><img src='" . asset('icons/zebet.png') . "' alt=''></a> -->
-                </div>
-                </td>
-            </tr>";
+                echo self::echoGames($team);
             }
         }
     }
@@ -364,7 +361,7 @@ class footballController extends Controller
         //$lastYear = date('Y');
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api-football-v1.p.rapidapi.com/v3/fixtures?date=$today&league=140&season=$lastYear",
+            CURLOPT_URL => "https://api-football-v1.p.rapidapi.com/v3/fixtures?date=$today&league=140&season=".self::lastYear()."",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -401,26 +398,7 @@ class footballController extends Controller
             </tr>";
         } else {
             foreach ($responses->response as $team) {
-                echo "    
-                <tr class='pointers'>
-                <td  class='fontSize10px'>" . self::changeTimeZone($team->fixture->timezone, $team->fixture->date) . "</td>
-                <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->home->name . "</td>
-                <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='fontSize10px'>vs</td>
-                <td onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->away->name . "</td>
-                <td class='fontSize10px'>" . self::callPrediction($team) . "</td>
-                <td class='fontSize10px'>" . self::odd($team->fixture->id) . "</td>
-                <td class='fontSize10px'>
-                <div class=' wid70 wid100Mobile mx-auto'>
-                <div class='d-flex align-items-center justify-content-between'>
-                    <div class='btn-group' style='border: solid #0f46dc 1px; border-radius: 25px; overflow: hidden;'>
-                    <a href='https://clcr.me/xsOTPT' class='btn' sytle='padding: 3px;' target='_blank' ><img src='" . asset('icons/1xbet.png') . "' alt='' class='iconSmall'></a>
-                    <a href='https://clcr.me/xsOTPT' class='' style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;' target='_blank'> Bet Now</a>
-                    </div>
-                 <!--   <a href='https://paripesa.bet/solomonbet'><img src='" . asset('icons/paripasa.png') . "' alt=''></a>
-                    <a href='http://bit.ly/ZB-KingBets'><img src='" . asset('icons/zebet.png') . "' alt=''></a> -->
-                </div>
-                </td>
-            </tr>";
+                echo self::echoGames($team);
             }
         }
     }
@@ -432,7 +410,7 @@ class footballController extends Controller
         //$lastYear = date('Y');
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api-football-v1.p.rapidapi.com/v3/fixtures?date=$today&league=135&season=$lastYear",
+            CURLOPT_URL => "https://api-football-v1.p.rapidapi.com/v3/fixtures?date=$today&league=135&season=".self::lastYear()."",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -469,26 +447,7 @@ class footballController extends Controller
             </tr>";
         } else {
             foreach ($responses->response as $team) {
-                echo "    
-                <tr onclick='location.href=\"/fixture/" . $team->fixture->id . "/" . $team->league->id . "\"' class='pointers'>
-                <td class='fontSize10px'>" . self::changeTimeZone($team->fixture->timezone, $team->fixture->date) . "</td>
-                <td class='fontSize10px'>" . $team->teams->home->name . "</td>
-                <td class='fontSize10px'>vs</td>
-                <td class='fontSize10px'>" . $team->teams->away->name . "</td>
-                <td class='fontSize10px'>" . self::callPrediction($team) . "</td>
-                <td class='fontSize10px'>" . self::odd($team->fixture->id) . "</td>
-                <td class='fontSize10px'>
-                <div class=' wid70 wid100Mobile mx-auto'>
-                <div class='d-flex align-items-center justify-content-between'>
-                    <div class='btn-group' style='border: solid #0f46dc 1px; border-radius: 25px; overflow: hidden;'>
-                    <a href='https://clcr.me/xsOTPT' class='btn' sytle='padding: 3px;'  target='_blank' ><img src='" . asset('icons/1xbet.png') . "' alt='' class='iconSmall'></a>
-                    <a href='https://clcr.me/xsOTPT' class='' target='_blank'  style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;'> Bet Now</a>
-                    </div>
-                 <!--   <a href='https://paripesa.bet/solomonbet'><img src='" . asset('icons/paripasa.png') . "' alt=''></a>
-                    <a href='http://bit.ly/ZB-KingBets'><img src='" . asset('icons/zebet.png') . "' alt=''></a> -->
-                </div>
-                </td>
-            </tr>";
+                echo self::echoGames($team);
             }
         }
     }
@@ -527,14 +486,56 @@ class footballController extends Controller
 
         return $responses;
     }
-    public static function callPrediction($team)
+      public static function callPrediction($team)
     {
         if ($team->teams->home->name == self::predictions($team->fixture->id, "winner", "name")) {
-            return "1x";
+            return preg_match('/\bdraw\b/i', self::newGamesPredictions($team->fixture->id)) ? "1x" : "1";
+            // return "1x";
         } else {
-            return "x2";
+             return preg_match('/\bdraw\b/i', self::newGamesPredictions($team->fixture->id)) ? "x2" : "2";
+          // return "x2";
         }
     }
+
+
+
+   
+        public static function newGamesPredictions($fixtureId)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api-football-v1.p.rapidapi.com/v3/predictions?fixture=" . $fixtureId,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 60,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_POSTFIELDS => "",
+            CURLOPT_HTTPHEADER => array(
+                "cache-control: no-cache",
+                "postman-token: b1e1fe16-42e9-60b7-0f06-69d5f0a075b0",
+                "x-rapidapi-host: api-football-v1.p.rapidapi.com",
+                "x-rapidapi-key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $responses = "";
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if (!isset(json_decode($response)->response[0])) {
+            return "N/A";
+        } else {
+            $responses = json_decode($response)->response[0]->predictions;
+            // $secondResp = json_decode($response)->response[0];
+            return $responses->advice;
+        }
+    }
+ 
 
 
     public static function loadFixtureData($fixtureId)
@@ -584,7 +585,7 @@ class footballController extends Controller
                             <div class='d-lg-flex align-items-center me-3  d-none'>
                             " . self::showStandingsCal($team->teams->away->id) . "
                             </div>
-                            <span class='fontSize20px socialColorDeeper boldFive'>" . $team->teams->away->name . "</span>
+                            <span class='fontSize20px socialColorDeeper boldFive centerText'>" . $team->teams->away->name . "</span>
                         </div>
                     </div>
                 </div>
@@ -640,11 +641,11 @@ class footballController extends Controller
             <div class='wid100 bgSocials p-3'>
                 <p class='fontSize12px boldFive '>Bet on this match on</p>
                 <div class='d-flex flex-wrap justify-content-between'>
-                    <img src='" . asset('icons/bookmarks/btway.png') . "' class='wid45px' alt=''>
-                    <img src='" . asset('icons/bookmarks/everygame.png') . "' class='wid45px' alt=''>
-                    <img src='" . asset('icons/bookmarks/22b.png') . "' class='wid45px' alt=''>
-                    <img src='" . asset('icons/bookmarks/1win.png') . "' class='wid45px' alt=''>
-                    <img src='" . asset('icons/bookmarks/1xb.png') . "' class='wid45px' alt=''>
+                    <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
+                    <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
+                    <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
+                    <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
+                    <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
                 </div>
             </div>
             <div class='bgWhite d-flex flex-wrap justify-content-between wid100 py-3 px-1 py-sm-5'>

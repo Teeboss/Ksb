@@ -236,14 +236,14 @@ class basketballController extends Controller
     {
         $curl = curl_init();
         $today = date("Y-m-d");
-        $tomorrow = date("Y-m-d", strtotime("+1 day"));
+    $tomorrow = date("Y-m-d" /*, strtotime("+1 day") */);
         $lastYear = date('Y', strtotime("-1 year"));
         $thisYear = date('Y');
         $nextYear = date('Y', strtotime("+1 year"));
         //$lastYear = date('Y');
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api-basketball.p.rapidapi.com/games?league=$leagueId&season=$lastYear-$thisYear&date=$tomorrow",
+            CURLOPT_URL => "https://api-basketball.p.rapidapi.com/games?league=$leagueId&season=$thisYear-$nextYear&date=$tomorrow",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -302,26 +302,8 @@ class basketballController extends Controller
                 <tbody>
                 ";
             foreach ($responses->response as $team) {
-                $gameUI .= "    
-                <tr  class='pointers'>
-                <td class='fontSize10px'>" . self::changeTimeZone($team->timezone, $team->date) . "</td>
-                <td onclick='location.href=\"/basketfix/" . $team->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->home->name . "</td>
-                <td onclick='location.href=\"/basketfix/" . $team->id . "/" . $team->league->id . "\"' class='fontSize10px'>vs</td>
-                <td onclick='location.href=\"/basketfix/" . $team->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->away->name . "</td>
-                <td class='fontSize10px'>" . self::standingCal($team->league->id, $team->teams->home->id, $team->teams->away->id) . "</td>
-                <td class='fontSize10px'>" . self::odd($team->id) . "</td>
-                <td colspan='2' class='fontSize10px'>
-                <div class=' wid70 wid100Mobile mx-auto'>
-                <div class='d-flex align-items-center justify-content-between'>
-                    <div class='btn-group' style='border: solid #0f46dc 1px; border-radius: 25px; overflow: hidden;'>
-                    <a href='https://clcr.me/xsOTPT' class='btn' sytle='padding: 3px;' target='_blank'  ><img src='" . asset('icons/1xbet.png') . "' alt='' class='iconSmall'></a>
-                    <a href='https://clcr.me/xsOTPT' class=''  target='_blank' style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;'> Bet Now</a>
-                    </div>
-                 <!--   <a href='https://paripesa.bet/solomonbet'><img src='" . asset('icons/paripasa.png') . "' alt=''></a>
-                    <a href='http://bit.ly/ZB-KingBets'><img src='" . asset('icons/zebet.png') . "' alt=''></a> -->
-                </div>
-                </td>
-            </tr>";
+                $gameUI .= self::echoGames($team);
+
             }
             $gameUI .= "
             </tbody>
@@ -345,7 +327,7 @@ class basketballController extends Controller
         //$lastYear = date('Y');
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api-basketball.p.rapidapi.com/games?league=117&season=$lastYear-$thisYear&date=$tomorrow",
+            CURLOPT_URL => "https://api-basketball.p.rapidapi.com/games?league=117&season=$thisYear-$nextYear&date=$tomorrow",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -382,26 +364,7 @@ class basketballController extends Controller
             </tr>";
         } else {
             foreach ($responses->response as $team) {
-                echo "    
-                <tr  class='pointers'>
-                <td class='fontSize10px'>" . self::changeTimeZone($team->timezone, $team->date) . "</td>
-                <td onclick='location.href=\"/basketfix/" . $team->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->home->name . "</td>
-                <td onclick='location.href=\"/basketfix/" . $team->id . "/" . $team->league->id . "\"' class='fontSize10px'>vs</td>
-                <td onclick='location.href=\"/basketfix/" . $team->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->away->name . "</td>
-                <td class='fontSize10px'>" . self::standingCal($team->league->id, $team->teams->home->id, $team->teams->away->id) . "</td>
-                <td class='fontSize10px'>" . self::odd($team->id) . "</td>
-                <td colspan='2' class='fontSize10px'>
-                <div class=' wid70 wid100Mobile mx-auto'>
-                <div class='d-flex align-items-center justify-content-between'>
-                    <div class='btn-group' style='border: solid #0f46dc 1px; border-radius: 25px; overflow: hidden;'>
-                    <a href='https://clcr.me/xsOTPT' class='btn' sytle='padding: 3px;' target='_blank' ><img src='" . asset('icons/1xbet.png') . "' alt='' class='iconSmall'></a>
-                    <a href='https://clcr.me/xsOTPT' class='' style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;' target='_blank' > Bet Now</a>
-                    </div>
-                 <!--   <a href='https://paripesa.bet/solomonbet'><img src='" . asset('icons/paripasa.png') . "' alt=''></a>
-                    <a href='http://bit.ly/ZB-KingBets'><img src='" . asset('icons/zebet.png') . "' alt=''></a> -->
-                </div>
-                </td>
-            </tr>";
+                 echo self::echoGames($team);
             }
         }
     }
@@ -418,7 +381,7 @@ class basketballController extends Controller
         //$lastYear = date('Y');
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api-basketball.p.rapidapi.com/games?league=12&season=$lastYear-$thisYear&date=$tomorrow",
+            CURLOPT_URL => "https://api-basketball.p.rapidapi.com/games?league=12&season=$thisYear-$nextYear&date=$tomorrow",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -455,26 +418,7 @@ class basketballController extends Controller
             </tr>";
         } else {
             foreach ($responses->response as $team) {
-                echo "    
-                <tr  class='pointers'>
-                <td class='fontSize10px'>" . self::changeTimeZone($team->timezone, $team->date) . "</td>
-                <td onclick='location.href=\"/basketfix/" . $team->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->home->name . "</td>
-                <td onclick='location.href=\"/basketfix/" . $team->id . "/" . $team->league->id . "\"' class='fontSize10px'>vs</td>
-                <td onclick='location.href=\"/basketfix/" . $team->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->away->name . "</td>
-                <td class='fontSize10px'>" . self::standingCal($team->league->id, $team->teams->home->id, $team->teams->away->id) . "</td>
-                <td class='fontSize10px'>" . self::odd($team->id) . "</td>
-                <td colspan='2' class='fontSize10px'>
-                <div class=' wid70 wid100Mobile mx-auto'>
-                <div class='d-flex align-items-center justify-content-between'>
-                    <div class='btn-group' style='border: solid #0f46dc 1px; border-radius: 25px; overflow: hidden;'>
-                    <a href='https://clcr.me/xsOTPT' class='btn' sytle='padding: 3px;'  target='_blank' ><img src='" . asset('icons/1xbet.png') . "' alt='' class='iconSmall'></a>
-                    <a href='https://clcr.me/xsOTPT' class='' style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;' target='_blank' > Bet Now</a>
-                    </div>
-                 <!--   <a href='https://paripesa.bet/solomonbet'><img src='" . asset('icons/paripasa.png') . "' alt=''></a>
-                    <a href='http://bit.ly/ZB-KingBets'><img src='" . asset('icons/zebet.png') . "' alt=''></a> -->
-                </div>
-                </td>
-            </tr>";
+                        echo self::echoGames($team);
             }
         }
     }
@@ -491,7 +435,7 @@ class basketballController extends Controller
         //$lastYear = date('Y');
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api-basketball.p.rapidapi.com/games?league=31&season=$lastYear-$thisYear&date=$tomorrow",
+            CURLOPT_URL => "https://api-basketball.p.rapidapi.com/games?league=31&season=$thisYear-$nextYear&date=$tomorrow",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -528,26 +472,7 @@ class basketballController extends Controller
             </tr>";
         } else {
             foreach ($responses->response as $team) {
-                echo "    
-                <tr  class='pointers'>
-                <td class='fontSize10px'>" . self::changeTimeZone($team->timezone, $team->date) . "</td>
-                <td onclick='location.href=\"/basketfix/" . $team->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->home->name . "</td>
-                <td onclick='location.href=\"/basketfix/" . $team->id . "/" . $team->league->id . "\"' class='fontSize10px'>vs</td>
-                <td onclick='location.href=\"/basketfix/" . $team->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->away->name . "</td>
-                <td class='fontSize10px'>" . self::standingCal($team->league->id, $team->teams->home->id, $team->teams->away->id) . "</td>
-                <td class='fontSize10px'>" . self::odd($team->id) . "</td>
-                <td colspan='2' class='fontSize10px'>
-                <div class=' wid70 wid100Mobile mx-auto'>
-                <div class='d-flex align-items-center justify-content-between'>
-                    <div class='btn-group' style='border: solid #0f46dc 1px; border-radius: 25px; overflow: hidden;'>
-                    <a href='https://clcr.me/xsOTPT' class='btn' sytle='padding: 3px;' target='_blank' ><img src='" . asset('icons/1xbet.png') . "' alt='' class='iconSmall'></a>
-                    <a href='https://clcr.me/xsOTPT' class='' style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;' target='_blank' > Bet Now</a>
-                    </div>
-                 <!--   <a href='https://paripesa.bet/solomonbet'><img src='" . asset('icons/paripasa.png') . "' alt=''></a>
-                    <a href='http://bit.ly/ZB-KingBets'><img src='" . asset('icons/zebet.png') . "' alt=''></a> -->
-                </div>
-                </td>
-            </tr>";
+                        echo self::echoGames($team);
             }
         }
     }
@@ -566,7 +491,7 @@ class basketballController extends Controller
         //$lastYear = date('Y');
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api-basketball.p.rapidapi.com/games?league=106&season=$lastYear-$thisYear&date=$tomorrow",
+            CURLOPT_URL => "https://api-basketball.p.rapidapi.com/games?league=106&season=$thisYear-$nextYear&date=$tomorrow",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -603,33 +528,37 @@ class basketballController extends Controller
             </tr>";
         } else {
             foreach ($responses->response as $team) {
-                echo "    
-                <tr  class='pointers'>
-                <td class='fontSize10px'>" . self::changeTimeZone($team->timezone, $team->date) . "</td>
-                <td onclick='location.href=\"/basketfix/" . $team->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->home->name . "</td>
-                <td onclick='location.href=\"/basketfix/" . $team->id . "/" . $team->league->id . "\"' class='fontSize10px'>vs</td>
-                <td onclick='location.href=\"/basketfix/" . $team->id . "/" . $team->league->id . "\"' class='fontSize10px'>" . $team->teams->away->name . "</td>
-                <td class='fontSize10px'>" . self::standingCal($team->league->id, $team->teams->home->id, $team->teams->away->id) . "</td>
-                <td class='fontSize10px'>" . self::odd($team->id) . "</td>
-                <td colspan='2' class='fontSize10px'>
-                <div class=' wid70 wid100Mobile mx-auto'>
-                <div class='d-flex align-items-center justify-content-between'>
-                    <div class='btn-group' style='border: solid #0f46dc 1px; border-radius: 25px; overflow: hidden;'>
-                    <a href='https://clcr.me/xsOTPT' class='btn' sytle='padding: 3px;' target='_blank' ><img src='" . asset('icons/1xbet.png') . "' alt='' class='iconSmall'></a>
-                    <a href='https://clcr.me/xsOTPT' class='' style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;' target='_blank' > Bet Now</a>
-                    </div>
-                 <!--   <a href='https://paripesa.bet/solomonbet'><img src='" . asset('icons/paripasa.png') . "' alt=''></a>
-                    <a href='http://bit.ly/ZB-KingBets'><img src='" . asset('icons/zebet.png') . "' alt=''></a> -->
-                </div>
-                </td>
-            </tr>";
+                echo self::echoGames($team);
             }
         }
     }
 
 
 
+    public static function echoGames($team) {
+    return "    
+            <div class='modal fade' id='staticBackdrop" . $team->id . "' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
+            <div class='modal-dialog'>
+                <div class='modal-content'>
+                <div class='modal-body'>
+                <iframe src='/basketfix/" . $team->id . "/" . $team->league->id . "             ' frameborder='0' style='width: 100%; height: 400px; border: none;'></iframe>
+                </div>
+                <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                </div>
+                </div>
+            </div>
+            </div>
 
+            <tr  class='pointers'  data-bs-toggle='modal' data-bs-target='#staticBackdrop" . $team->id . "'>
+            <td class='fontSize10px'>" . self::changeTimeZone($team->timezone, $team->date) . "</td>
+            <td class='fontSize10px'>" . $team->teams->home->name . "</td>
+            <td class='fontSize10px'>vs</td>
+            <td class='fontSize10px'>" . $team->teams->away->name . "</td>
+            <td class='fontSize10px'>" . self::standingCal($team->league->id, $team->teams->home->id, $team->teams->away->id) . "</td>
+            <td class='fontSize10px'>" . self::odd($team->id) . "</td>
+        </tr>";
+    }
 
 
     public static function odd($fixtureId)
@@ -654,7 +583,7 @@ class basketballController extends Controller
         $response = curl_exec($curl);
         curl_close($curl);
         if (!isset(json_decode($response)->response[0])) {
-            $responses = "not Available";
+            $responses = "<p class='text-center'>N/A<p>";
         } else {
             $resp = json_decode($response)->response[0]->bookmakers[0]->bets[0];
             $responses = "
@@ -698,7 +627,7 @@ class basketballController extends Controller
             echo "
         <p class='white fontSize12px boldFive wid100 bgShaddyWhite p-2'><img src='" . $team->country->flag  . "' class='me-2 wid16px' alt=''> " . $team->country->name . " : " . $team->country->name . "</p>
         <div class='wid100 p-2'>
-            <div class='d-block bgSocials wid100 mx-auto mt-5'>
+            <div class='d-block bgSocials wid100 mx-auto mt-2'>
                 <div class='d-block wid100Mobile wid75 mx-auto'>           
                 <div class='d-flex p-2 justify-content-between align-items-center'>
                     <div class='d-flex align-items-center'>
@@ -712,7 +641,7 @@ class basketballController extends Controller
                         <div class='d-lg-flex align-items-center me-3  d-none'>
                         " . self::showStandingsCal($team->teams->away->id, $team->league->id) . "
                         </div>
-                        <span class='fontSize24px socialColorDeeper boldFive'>" . $team->teams->away->name . "</span>
+                        <span class='fontSize24px socialColorDeeper boldFive centerText'>" . $team->teams->away->name . "</span>
                     </div>
                 </div>
            </div>
@@ -729,11 +658,11 @@ class basketballController extends Controller
         <div class='wid100 bgSocials p-3'>
         <p class='fontSize12px boldFive '>Bet on this match on</p>
         <div class='d-flex flex-wrap justify-content-between'>
-            <img src='" . asset('icons/bookmarks/btway.png') . "' class='wid45px' alt=''>
-            <img src='" . asset('icons/bookmarks/everygame.png') . "' class='wid45px' alt=''>
-            <img src='" . asset('icons/bookmarks/22b.png') . "' class='wid45px' alt=''>
-            <img src='" . asset('icons/bookmarks/1win.png') . "' class='wid45px' alt=''>
-            <img src='" . asset('icons/bookmarks/1xb.png') . "' class='wid45px' alt=''>
+            <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
+            <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
+            <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
+            <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
+            <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
         </div>
     </div>
     <div class='bgWhite d-flex flex-wrap justify-content-between wid100 py-3 px-1 py-sm-5'>
@@ -753,22 +682,6 @@ class basketballController extends Controller
         $lastYear = date('Y', strtotime("-1 year"));
         $thisYear = date('Y');
         $nextYear = date('Y', strtotime("+1 year"));
-        // curl_setopt_array($curl, array(
-        //     CURLOPT_URL => "https://api-basketball.p.rapidapi.com/standings?team=$teamId&season=$lastYear-$thisYear&league=$leagueId",
-        //     CURLOPT_RETURNTRANSFER => true,
-        //     CURLOPT_ENCODING => '',
-        //     CURLOPT_MAXREDIRS => 10,
-        //     CURLOPT_TIMEOUT => 0,
-        //     CURLOPT_FOLLOWLOCATION => true,
-        //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        //     CURLOPT_CUSTOMREQUEST => 'GET',
-        //     CURLOPT_HTTPHEADER => array(
-        //         'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
-        //         'X-RapidAPI-Host: api-basketball.p.rapidapi.com'
-        //     ),
-        // ));
-
-        // $curl = curl_init();
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://api-basketball.p.rapidapi.com/standings?team=$teamId&season=2022-2023&league=$leagueId",

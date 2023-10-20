@@ -24,8 +24,8 @@
         </div>
     @else
         <!-- <div class="mx-auto m-2 wid80 wid100Mobile d-block higt125px" style="overflow: hidden;">
-            <a href="/contact" class="d-block wid100 fontSize34px blackKsb boldEight text-center">PLACE YOUR ADVERTISEMENT HERE</a>
-        </div> -->
+                                    <a href="/contact" class="d-block wid100 fontSize34px blackKsb boldEight text-center">PLACE YOUR ADVERTISEMENT HERE</a>
+                                </div> -->
         <div class="mx-auto m-2 wid80 wid100Mobile d-block higt125px" style="overflow: hidden;">
             <a href="#"><img src="{{ asset('icons/longBanner.gif') }}" class="wid100" alt=""></a>
         </div>
@@ -66,7 +66,7 @@
             <div class="modal-content">
                 <div class="modal-body p-0">
                     <img src="{{ asset('icons/telegramModal.gif') }}" class="wid100 pointers" alt="Image"
-                        onclick="location.href='https://t.me/+v8J2LHM5RJEzZjhk'">
+                        onclick="location.href='https://t.me/+JuEe07nfSssxM2Y0'">
                 </div>
             </div>
         </div>

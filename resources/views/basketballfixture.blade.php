@@ -1,10 +1,11 @@
-@extends('layouts/pageHead')
+<x-fixture-head></x-fixture-head>
 <main class="marginTopSmallNavLong" style="background-color:  #F5F5F5;">
     <div class="mx-auto m-2 wid80 wid100Mobile d-block higt125px" style="overflow: hidden;">
         <img src="{{ asset('icons/1xbanner.png') }}" class="wid100" alt="">
     </div>
     <div class="d-block p-2 p-sm-0 mx-auto wid100Mobile wid50 bgWhite">
-        <p class="white fontSize12px boldFive wid100 bgShaddyWhite p-2"><img src="{{ asset('icons/football/spain.png') }}" class="me-2" alt=""> spain: Leb Plata</p>
+        <p class="white fontSize12px boldFive wid100 bgShaddyWhite p-2"><img src="{{ asset('icons/football/spain.png') }}"
+                class="me-2" alt=""> spain: Leb Plata</p>
         <div class="wid100 p-2">
             <div class="d-block bgSocials wid100 mx-auto mt-5">
                 <div class="d-block wid100Mobile wid70 mx-auto">
@@ -12,21 +13,31 @@
                         <div class="d-flex align-items-center"><!-- width will help with the flex spacing -->
                             <span class="fontSize24px noWrap socialColorDeeper boldFive centerText">Zornotza ST</span>
                             <div class="d-lg-flex align-items-center ms-2 d-none">
-                                <span class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingRed">L</span>
-                                <span class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGreen">W</span>
-                                <span class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGreen">W</span>
-                                <span class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGreen">W</span>
-                                <span class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGrey">D</span>
+                                <span
+                                    class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingRed">L</span>
+                                <span
+                                    class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGreen">W</span>
+                                <span
+                                    class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGreen">W</span>
+                                <span
+                                    class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGreen">W</span>
+                                <span
+                                    class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGrey">D</span>
                             </div>
                         </div>
                         <span class="boldFour bodyA mx-4 fontSize12px">02:00</span>
                         <div class="d-flex align-items-center">
                             <div class="d-lg-flex align-items-center me-3  d-none">
-                                <span class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGreen">W</span>
-                                <span class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGrey">D</span>
-                                <span class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingRed">L</span>
-                                <span class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGreen">W</span>
-                                <span class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGrey">D</span>
+                                <span
+                                    class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGreen">W</span>
+                                <span
+                                    class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGrey">D</span>
+                                <span
+                                    class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingRed">L</span>
+                                <span
+                                    class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGreen">W</span>
+                                <span
+                                    class="fontSize6px marginRightStandings padSmall1 borderRA1 white boldFive standingGrey">D</span>
                             </div>
                             <span class="fontSize24px noWrap socialColorDeeper boldFive">Navarra</span>
                         </div>
@@ -85,7 +96,8 @@
         </div>
         <div class="bgWhite d-flex flex-wrap justify-content-between wid100 py-3 px-1 py-sm-5">
             <div class="wid45 wid100Mobile">
-                <span class="fontSize12px d-block boldFive p-2 bgSocials socialColorDeeper">Zornotza ST: Last results</span>
+                <span class="fontSize12px d-block boldFive p-2 bgSocials socialColorDeeper">Zornotza ST: Last
+                    results</span>
                 <div class="d-flex my-1 justify-content-between p-2 align-items-center shadow-sm">
                     <div class="d-flex align-items-center">
                         <span class="fontSize12px me-3 padSmall1 borderRA1 white boldFive standingGreen">W</span>
@@ -123,7 +135,8 @@
                 </div>
             </div>
             <div class="wid45 wid100Mobile">
-                <span class="fontSize12px d-block boldFive p-2 bgSocials socialColorDeeper">Chalton: Last results</span>
+                <span class="fontSize12px d-block boldFive p-2 bgSocials socialColorDeeper">Chalton: Last
+                    results</span>
                 <div class="d-flex my-1 justify-content-between p-2 align-items-center shadow-sm">
                     <div class="d-flex align-items-center">
                         <span class="fontSize12px me-3 padSmall1 borderRA1 white boldFive standingGreen">W</span>
@@ -177,4 +190,3 @@
 
     gtag('config', 'G-8FKKQNJ4Z8');
 </script>
-@extends('layouts/footer')
