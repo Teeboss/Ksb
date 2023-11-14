@@ -12,10 +12,12 @@
             <div class="wid50 wid100Mobile p-2">
                 <p class="fontSize20px boldFour mb-1">Reach out.</p>
                 <p class="fontSize44px boldSeven mb-5">We’re here to help. Just reach out to us,</p>
-                <p class="fontSize14px boldSeven mb-2"><a href="mailto: support@Kingsolomonbet.com"
-                        class="fontSize14px bodyA boldFour">support@Kingsolomonbet.com</a></p>
-                <p class="fontSize14px boldSeven mb-2"><a href="tel: +2347012345678"
-                        class="fontSize14px boldFour bodyA">+234 701 234 5678</a></p>
+                <p class="fontSize14px boldSeven mb-2"><a href="mailto: betkingsolomon@gmail.com"
+                        class="fontSize14px bodyA boldFour">betkingsolomon@gmail.com</a></p>
+                <p class="fontSize14px boldSeven mb-2"><a href="tel: +2348031961667"
+                        class="fontSize14px boldFour bodyA">+234 803 196 1667</a></p>
+                <p class="fontSize14px boldSeven mb-2"><a href="#" class="fontSize14px boldFour bodyA">Address:
+                        Oshogbo st, Lagos Nigeria</a></p>
                 <div class="d-flex">
                     <img src="{{ asset('icons/dd.png') }}" alt="" class="m-1">
                     <img src="{{ asset('icons/smallTwitter.png') }}" alt="" class="m-1">

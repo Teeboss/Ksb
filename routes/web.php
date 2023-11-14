@@ -51,6 +51,19 @@ Route::get('/tennisfixture', function () {
     return view('tennisfixture');
 })->middleware('auth');
 
+Route::get('/privacy', function () {
+    return view('privacy');
+});
+
+Route::get('/terms', function () {
+    return view('terms');
+});
+
+Route::get('/refund', function () {
+    return view('refund');
+});
+
+
 Route::get('livescores', function () {
     $bannerLong = DB::table('banner_uploads')->where('bannertype', 'long')->first();
     $bannerShort = DB::table('banner_uploads')->where('bannertype', 'wide')->first();

@@ -14,8 +14,8 @@
         </div>
     @else
         <!-- <div class="mx-auto m-2 wid80 wid100Mobile d-block higt125px" style="overflow: hidden;">
-                                <a href="/contact" class="d-block wid100 fontSize34px blackKsb boldEight text-center">PLACE YOUR ADVERTISEMENT HERE</a>
-                            </div> -->
+                                    <a href="/contact" class="d-block wid100 fontSize34px blackKsb boldEight text-center">PLACE YOUR ADVERTISEMENT HERE</a>
+                                </div> -->
         <div class="mx-auto m-2 wid80 wid100Mobile d-block higt125px" style="overflow: hidden;">
             <a href="#"><img src="{{ asset('icons/longBanner.gif') }}" class="wid100" alt=""></a>
         </div>

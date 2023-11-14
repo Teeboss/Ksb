@@ -5,10 +5,12 @@
             <div class="d-flex justify-content-between">
                 <a href="/contact" class="m-3 text-decoration-none fontSize16px white d-block boldFour">Contact Us</a>
                 <a href="/news" class="m-3 text-decoration-none fontSize16px white d-block boldFour">Blog</a>
-                <!-- <img src="{{ asset('icons/beware.png') }}" class="m-3 " alt="" style="height: 18px;"> -->
-                <a href="#" class="m-3 text-decoration-none fontSize16px white boldFour  d-block">Terms &
+                {{-- <!-- <img src="{{ asset('icons/beware.png') }}" class="m-3 " alt="" style="height: 18px;"> --> --}}
+                <a href="/terms" class="m-3 text-decoration-none fontSize16px white boldFour  d-block">Terms &
                     Conditions</a>
-                <a href="#" class="m-3 text-decoration-none fontSize16px white boldFour  d-block">Privacy
+                <a href="/privacy" class="m-3 text-decoration-none fontSize16px white boldFour  d-block">Privacy
+                    Policy</a>
+                <a href="/refund" class="m-3 text-decoration-none fontSize16px white boldFour  d-block">Refund
                     Policy</a>
             </div>
             <div>
@@ -23,15 +25,17 @@
     </div>
     <p class="fontSize12px mt-4 shadeWhite text-center d-none d-lg-block">King Solomon Bet &copy; {{ date('Y') }}
     </p>
-    <div class="d-block pt-2 wid20Mobile mx-auto d-sm-none">
+    <div class="d-block pt-2 wid20Mobile mx-auto d-sm-none ">
         <img src="{{ asset('icons/kgsb.png') }}" alt="" class="d-block wid24px mx-auto">
-        <div class="d-flex justify-content-center">
-            <a href="/contact" class="m-3 fontSize10px white boldFour text-decoration-none d-block noWrap ">Contact
+        <div class="d-flex justify-content-center my-3">
+            <a href="/contact" class="mx-2 fontSize10px white boldFour text-decoration-none d-block noWrap ">Contact
                 Us</a>
-            <a href="/news" class="m-3 fontSize10px white boldFour text-decoration-none d-block noWrap ">Blog</a>
-            <a href="#" class="m-3 fontSize10px white boldFour text-decoration-none d-block noWrap">Terms &
+            <a href="/news" class="mx-2 fontSize10px white boldFour text-decoration-none d-block noWrap ">Blog</a>
+            <a href="/terms" class="mx-2 fontSize10px white boldFour text-decoration-none d-block noWrap">Terms &
                 Conditions</a>
-            <a href="#" class="m-3 fontSize10px white boldFour text-decoration-none d-block noWrap">Privacy
+            <a href="/privacy" class="mx-2 fontSize10px white boldFour text-decoration-none d-block noWrap">Privacy
+                Policy</a>
+            <a href="/refund" class="mx-2 fontSize10px white boldFour text-decoration-none d-block noWrap">Refund
                 Policy</a>
         </div>
         <div class="d-flex justify-content-center align-items-center">
@@ -45,13 +49,13 @@
         <p class="fontSize12px mt-4 shadeWhite text-center d-block d-sm-none">King Solomon Bet &copy;
             {{ date('Y') }}</p>
     </div>
-    <!-- <div class="absolute bgRed p-5 black" style="bottom: 0; z-index: 333; top: 324%; left: 300;">
+    {{-- <!-- <div class="absolute bgRed p-5 black" style="bottom: 0; z-index: 333; top: 324%; left: 300;">
         <div class="d-flex align-items-center">
             <img src="{{ asset('icons/facebook.png') }}" class="m-2 wid9px" alt="">
             <img src="{{ asset('icons/twitter.png') }}" class="m-2 wid9px" alt="">
             <img src="{{ asset('icons/instagram.png') }}" class="m-2 wid9px" alt="">
         </div>
-    </div> -->
+    </div> --> --}}
 </footer>
 </body>
 

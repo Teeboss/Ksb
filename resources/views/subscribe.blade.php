@@ -37,72 +37,19 @@
                     <a
                         class="bgLinearWorld wid-40 wid-50-mobile text-decoration-none p-2 fontSize16px boldThree rounded-5 d-block text-center mb-3">Africa</a>
                 </div> --}}
-                <div class="wid0 cardNgBg">
+                {{-- <div class="wid0 cardNgBg">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, fugit accusamus harum iusto dicta
                     veniam illo obcaecati culpa maiores odit magni quaerat magnam neque autem laboriosam, porro
                     distinctio explicabo aliquam.
-                </div>
+                </div> --}}
                 <a href="https://paystack.com/pay/kgsb-vip"
                     class="bgLinearGreen wid-40 wid-50-mobile text-decoration-none p-2 fontSize14px boldThree rounded-5 d-block text-center mb-3">Start
                     Making Money with Us Naija !</a>
-                <button data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    class="bgLinearWorld wid-40 wid-50-mobile text-decoration-none p-2 fontSize14px boldThree rounded-5 d-block text-center mb-3">Click
-                    here if you're outside Nigeria</button>
 
                 <a href="/" class="fontSize16px boldFour white text-decoration-none d-inline-block ms-3">Head back
                     to our Home page</a>
             </div>
             <div class="col-md-4"></div>
-        </div>
-    </div>
-
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Make Payment</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="paymentForm">
-                        <div class="row">
-                            <div class="col" style="margin-bottom: 10px;">
-                                <label for="phone-number" class="fontSize14px boldSix">Phone Number</label>
-                                <input type="tel" id="phone-number" class="form-control" required />
-                            </div>
-                            <div class="col" style="margin-bottom: 10px;">
-                                <label for="email" class="fontSize14px boldSix">Email</label>
-                                <input type="email" id="email" class="form-control" required />
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin-bottom: 10px;">
-                            <label for="amount" class="fontSize14px boldSix">Amount</label>
-                            <input type="number" id="amount" class="form-control" required />
-                        </div>
-                        <div class="form-group" style="margin-bottom: 10px;">
-                            <label for="first-name" class="fontSize14px boldSix">First Name</label>
-                            <input type="text" id="first-name" class="form-control" />
-                        </div>
-                        <div class="form-group" style="margin-bottom: 10px;">
-                            <label for="last-name" class="fontSize14px boldSix">Last Name</label>
-                            <input type="text" id="last-name" class="form-control" />
-                        </div>
-                        <div class="form-submit">
-                            <button type="submit"
-                                class="bgLinearGreen wid100 wid-50-mobile text-decoration-none p-2 fontSize16px boldSeven rounded-5 d-block text-center mb-3">
-                                Pay </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary fontSize14px boldSix"
-                        data-bs-dismiss="modal">Close</button>
-                    {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
-                </div>
-            </div>
         </div>
     </div>
 </main>
@@ -139,46 +86,7 @@
             return new bootstrap.Popover(popoverTriggerEl)
         })
 
-        $("#paymentButtons").hide();
+        // $("#paymentButtons").hide();
 
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: '/loadHomeGames',
-            type: 'GET',
-            success: (data) => {
-                $("#homeGames").html(data)
-            }
-        })
-
-
-        const paymentForm = document.getElementById('paymentForm');
-        paymentForm.addEventListener('submit', (e) => payWithBani(e), false);
-
-        function payWithBani(e) {
-            e.preventDefault()
-
-            let handler = BaniPopUp({
-                amount: document.getElementById('amount').value, //The amount the customer wants to pay
-                phoneNumber: document.getElementById('phone-number')
-                    .value, //The mobile number of the customer in int format i.e +2348173709000
-                email: document.getElementById('email').value, //The email of the customer
-                firstName: document.getElementById('first-name').value, //The first name of the customer
-                lastName: document.getElementById('last-name').value, //The last name of the customer
-                merchantKey: "pub_prod_FHEC2H7XG124T54W62EVCPE1J71V2S", //The merchant Bani public key
-                metadata: "", //Custom JSON object passed by the merchant. This is optional
-                merchantRef: "", //Custom payment reference passed by the merchant. This is optional
-                onClose: (response) => {
-                    console.log("ONCLOSE DATA", response)
-                },
-                callback: function(response) {
-                    let message = 'Payment complete! Reference: ' + response?.reference
-                    location.replace('/payday')
-                    console.log(message, response)
-                }
-            })
-            handler
-        }
     })
 </script>

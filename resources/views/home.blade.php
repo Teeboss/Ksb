@@ -25,7 +25,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <td colspan="2" class="boldFive fontSize10px">Events</td>
+                                <td colspan="4" class="boldFive fontSize10px">Events</td>
                                 <td class="boldFive fontSize10px">Tip</td>
                                 <td colspan="2" class="boldFive fontSize10px centerText">Odd <br>
                                     <div class="d-flex justify-content-between">
