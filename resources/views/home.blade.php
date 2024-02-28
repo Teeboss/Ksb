@@ -20,36 +20,124 @@
     <div class="wid80 wid100Mobile  p-2 p-sm-2 bgWhiteKsb mx-auto rounded">
         <div class="d-flex justify-content-center">
             <div class="wid70 wid100Mobile me-lg-3">
-                <p class="fontSize16px boldFive">Today Free Games</p>
-                <div class="table-responsive bgWhite">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <td colspan="4" class="boldFive fontSize10px">Events</td>
-                                <td class="boldFive fontSize10px">Tip</td>
-                                <td colspan="2" class="boldFive fontSize10px centerText">Odd <br>
-                                    <div class="d-flex justify-content-between">
-                                        <span>1</span>
-                                        <span>X</span>
-                                        <span>2</span>
+                @auth
+                    <p class="fontSize16px blackKsb boldFive">Today Free Games</p>
+                    <div class="table-responsive bgWhite mb-3">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td colspan="4" class="boldFive fontSize10px">Events</td>
+                                    <td class="boldFive fontSize10px">Tip</td>
+                                    <td class="boldFive fontSize10px centerText">Odd <br>
+                                        <div class="d-flex justify-content-between">
+                                            <span>1</span>
+                                            <span>X</span>
+                                            <span>2</span>
+                                        </div>
+                                    </td>
+                                    <td colspan="2" class="boldFive fontSize10px text-center">Booking</td>
+                                </tr>
+                            </thead>
+                            @php $games = explode('^^', $today_games->games) @endphp
+                            <tbody id="insertGames">
+                                <?php
+                                foreach ($games as $game) {
+                                    echo $game;
+                                }
+                                ?>
+                                {{-- <tr>
+                                <td colspan="5" class="fontSize12px boldFive pointers">
+                                    <div
+                                        class="d-flex justify-content-between boldEight fontSize16px blackKsb p-2 rounded-2 pointers">
+                                        <span>Booking Code </span>
+                                        <span>Total Odds</span>
                                     </div>
+                                    @if ($today_games->status)
+                                        <div
+                                            class="d-flex justify-content-between align-items-center wid95 wid50Mobile">
+
+                                            <div class="d-flex justify-content-between align-items-center wid20"
+                                                onclick="location.href = '{{ $today_games->url }}'">
+                                                <img src="{{ asset('icons/' . $today_games->vendor . '.png') }}"
+                                                    alt="" class="wid32px">
+                                                <span class="d-block boldEight fontSize12px p-1 rounded-2 pointers">
+                                                    <span class="p-2 d-block boldEight fontSize12px p-1 rounded-2 "
+                                                        style="border:  #111111 solid 1px">
+                                                        {{ $today_games->booking }}</span>
+                                                </span>
+                                            </div>
+
+                                            <span colspan="5" class="boldEight fontSize12px d-block">
+                                                {{ $today_games->odd }}
+                                            </span>
+                                        </div>
+                                        <div
+                                            class="d-flex justify-content-between align-items-center wid95 wid50Mobile">
+                                            <div class="d-flex justify-content-between align-items-center wid20"
+                                                onclick="location.href = '{{ $today_games->urlTwo }}'">
+                                                <img src="{{ asset('icons/' . $today_games->vendorTwo . '.png') }}"
+                                                    alt="" class="wid32px">
+                                                <span class="d-block boldEight fontSize12px p-1 rounded-2 pointers">
+                                                    <span class="p-2 d-block boldEight fontSize12px p-1 rounded-2 "
+                                                        style="border:  #111111 solid 1px">
+                                                        {{ $today_games->bookingTwo }}</span>
+                                                </span>
+                                            </div>
+                                            <span colspan="5" class="boldEight fontSize12px d-block">
+                                                {{ $today_games->oddTwo }}
+                                            </span>
+                                        </div>
+                                    @else
+                                        <div
+                                            class="d-flex justify-content-between align-items-center wid95 wid50Mobile">
+                                            <div class="d-flex justify-content-between align-items-center wid20">
+                                                <span class="d-block boldEight fontSize12px p-1 rounded-2">
+                                                    <span class="p-2 d-block boldEight fontSize12px p-1 rounded-2 ">
+                                                        N/A</span>
+                                                </span>
+                                            </div>
+                                            <span colspan="5" class="boldEight fontSize12px d-block">
+                                                N/A
+                                            </span>
+                                        </div>
+                                    @endif
                                 </td>
-                                <td class="boldFive fontSize10px text-center">Booking</td>
-                            </tr>
-                        </thead>
-                        <tbody id="homeGames">
-                            <tr>
-                                <td colspan="6" class="bgGrey">
-                                    <div class="d-block mx-auto">
-                                        <img src="{{ asset('icons/loaders/Soccerball.gif') }}" alt=""
-                                            class="wid10 d-block mx-auto">
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <a href="https://t.me/+JuEe07nfSssxM2Y0"
+                            </tr> --}}
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    <p class="fontSize16px boldFive">Quick Games For You</p>
+                    <div class="table-responsive bgWhite">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td colspan="4" class="boldFive fontSize10px">Events</td>
+                                    <td class="boldFive fontSize10px">Tip</td>
+                                    <td class="boldFive fontSize10px centerText">Odd <br>
+                                        <div class="d-flex justify-content-between">
+                                            <span>1</span>
+                                            <span>X</span>
+                                            <span>2</span>
+                                        </div>
+                                    </td>
+                                    <td colspan="2" class="boldFive fontSize10px text-center">Booking</td>
+                                </tr>
+                            </thead>
+                            <tbody id="homeGames">
+                                <tr>
+                                    <td colspan="8" class="bgGrey">
+                                        <div class="d-block mx-auto">
+                                            <img src="{{ asset('icons/loaders/Soccerball.gif') }}" alt=""
+                                                class="wid10 d-block mx-auto">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                @endauth
+                <a href="https://t.me/+BWWg98ga2RZmMjVk"
                     class="telegramBlue noneTextDecoration centerText noneTextDecoration d-block mx-auto my-5 white fontSize16px p-2 boldSix wid100"><img
                         src="{{ asset('icons/telegramVector.png') }}" alt=""> Click here to join telegram
                     group</a>
@@ -141,11 +229,11 @@
                     </div>
 
                 </div>
-                <a href="https://t.me/+JuEe07nfSssxM2Y0"
+                <a href="https://t.me/+BWWg98ga2RZmMjVk"
                     class="telegramBlue centerText noneTextDecoration d-block my-5 white fontSize16px p-2 boldSix wid100"><img
                         src="{{ asset('icons/telegramVector.png') }}" alt=""> Click here to join telegram
                     group</a>
-                <div class="my-3">
+                {{-- <div class="my-3">
                     <p class="fontSize14px boldFive">Special offers from bookmarkers, click to claim bonus</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <img src="{{ asset('icons/betano-nigeria.png') }}" class="wid45px rounded-3" alt="">
@@ -155,7 +243,7 @@
                         <a href="https://www.betano.ng/"><img src="{{ asset('icons/betano-nigeria.png') }}"
                                 class="wid45px rounded-3" alt=""></a>
                     </div>
-                </div>
+                </div> --}}
                 <div class="my-3">
                     <p class="fontSize14px boldFive">Sport News</p>
                     <div class="wid100 d-flex flex-wrap justify-content-sm-start p-0 justify-content-center">
@@ -179,7 +267,8 @@
                 <div class="mt-2">
                     <img src="{{ asset('icons/kgsb.png') }}" alt="" class="my-5 wid45px">
                     <p class="fontSize14px linehigt17px boldFour">
-                        Welcome to KGS BET - a membership-based sports prediction website where you can access accurate
+                        Welcome to KGSB Community - a membership-based sports prediction website where you can access
+                        accurate
                         and detailed predictions for your favorite sports events. We focus on Football, Basketball, and
                         Tennis, providing registered users with in-depth predictions and analysis to help them make
                         informed betting decisions. <br><br>
@@ -197,7 +286,7 @@
                         decisions, look no further than KGS BET. Join today and start reaping the benefits of our expert
                         predictions!<br><br>
                     </p>
-                    <a href="https://t.me/+JuEe07nfSssxM2Y0"
+                    <a href="https://t.me/+BWWg98ga2RZmMjVk"
                         class="telegramBlue noneTextDecoration centerText d-block my-5 white fontSize16px p-2 boldSix wid100"><img
                             src="{{ asset('icons/telegramVector.png') }}" alt=""> Click here to join telegram
                         group</a>
@@ -254,19 +343,20 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="wid100 d-flex flex-wrap justify-content-sm-start justify-content-center">
+        {{-- <div class="wid100 d-flex flex-wrap justify-content-sm-start justify-content-center">
             @foreach ($newses as $news)
-<div class="col-sm-4 col-11 m-3">
-                <div class="newsImage">
-                    <img src="{{ 'files/' . $news->name }}" alt="" class="wid100">
-                </div>
-                <p class="fontSize14px boldFour socialColorDeeperNine m-0 mt-2">{{ date('M d,Y', strtotime($news->created_at)) }}</p>
-                <p class="fontSize20px boldFive socialColorDeeper m-0">{{ $news->newstitle }}</p>
-                <p class="fontSize14px boldFour bodyA m-0">{{ $news->newsbody }}</p>
+                <div class="col-sm-4 col-11 m-3">
+                    <div class="newsImage">
+                        <img src="{{ 'files/' . $news->name }}" alt="" class="wid100">
+                    </div>
+                    <p class="fontSize14px boldFour socialColorDeeperNine m-0 mt-2">
+                        {{ date('M d,Y', strtotime($news->created_at)) }}</p>
+                    <p class="fontSize20px boldFive socialColorDeeper m-0">{{ $news->newstitle }}</p>
+                    <p class="fontSize14px boldFour bodyA m-0">{{ $news->newsbody }}</p>
 
-            </div>
-@endforeach
-        </div> -->
+                </div>
+            @endforeach
+        </div> --}}
     </div>
 
 
@@ -278,7 +368,7 @@
             <div class="modal-content">
                 <div class="modal-body p-0">
                     <img src="{{ asset('icons/telegramModal.gif') }}" class="wid100 pointers" alt="Image"
-                        onclick="location.href='https://t.me/+JuEe07nfSssxM2Y0'">
+                        onclick="location.href='https://t.me/+BWWg98ga2RZmMjVk'">
                 </div>
             </div>
         </div>
@@ -336,6 +426,6 @@
         }
         setTimeout(function() {
             localStorage.removeItem('myItem');
-        }, 120000);
+        }, 1200000);
     });
 </script>

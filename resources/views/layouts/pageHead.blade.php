@@ -74,7 +74,7 @@
             <div class=" d-flex justify-content-between align-items-center">
                 <a href="/"><img src="{{ asset('icons/iconNavs.png') }}" class="wid120px" alt=""></a>
                 <div class="d-flex justify-content-between wid65 align-items-center ">
-                    <a href="https://t.me/+JuEe07nfSssxM2Y0" class="fontSize14px navA" target="_blank"
+                    <a href="https://t.me/+BWWg98ga2RZmMjVk" class="fontSize14px navA" target="_blank"
                         rel="noopener noreferrer">Join us telegram <img src="{{ asset('icons/TelegramLogo.png') }}"
                             alt="" class="ms-1"></a>
                     <a href="#" target="_blank" class="fontSize14px navA"
@@ -97,7 +97,7 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex wid60 mt-4 justify-content-between">
+            <div class="d-flex wid70 mt-4 justify-content-between">
                 @guest
                     <a href="/" class="boldFive fontSize16px navA {{ request()->is('/') ? 'navActive' : '' }}"
                         id="homeId">Home</a>
@@ -122,6 +122,10 @@
                         class="boldFive fontSize16px navA {{ request()->is(['subscription', 'subscription']) ? 'navActive' : '' }}"
                         data-bs-toggle="modal" data-bs-target="#loginModal">
                         Telegram VIP</a>
+                    <a href="/league-table"
+                        class="boldFive fontSize16px navA {{ request()->is(['league-table', 'league-table']) ? 'navActive' : '' }}"
+                        data-bs-toggle="modal" data-bs-target="#loginModal">
+                        Leagues Table</a>
                 @else
                     <a href="/" class="boldFive fontSize16px navA {{ request()->is('/') ? 'navActive' : '' }}"
                         id="homeId">Home</a>
@@ -143,6 +147,9 @@
                     <a href="/subscription"
                         class="boldFive fontSize16px navA {{ request()->is(['subscription', 'subscription']) ? 'navActive' : '' }}">
                         Telegram VIP</a>
+                    <a href="/league-table"
+                        class="boldFive fontSize16px navA {{ request()->is(['league-table', 'league-table']) ? 'navActive' : '' }}">
+                        Leagues Table</a>
                 @endguest
             </div>
         </div>
@@ -165,56 +172,61 @@
                     @endguest
                 </div>
             </div>
-            <div class=" d-flex justify-content-between">
-                @guest
-                    <a href="/" class="boldFive fontSize12px navA {{ request()->is('/') ? 'navActive' : '' }}"
-                        id="homeId">Home</a>
-                    <a href=""
-                        class="boldFive fontSize12px navA {{ request()->is(['football', 'fixture/*']) ? 'navActive' : '' }}"
-                        data-bs-toggle="modal" data-bs-target="#loginModal">
-                        Football</a>
-                    <a href=""
-                        class="boldFive fontSize12px navA {{ request()->is(['basketball', 'basketballfixture']) ? 'navActive' : '' }}"
-                        data-bs-toggle="modal" data-bs-target="#loginModal">
-                        <!-- <img src="{{ asset('icons/Basketball.png') }}" class="me-1" alt=""> -->
-                        Basketball</a>
-                    <a href="" class="boldFive fontSize12px navA {{ request()->is('tennis') ? 'navActive' : '' }}"
-                        data-bs-toggle="modal" data-bs-target="#loginModal">
-                        Tennis</a>
-                    <a href=""
-                        class="boldFive fontSize12px navA {{ request()->is('livescores') ? 'navActive' : '' }}"
-                        data-bs-toggle="modal" data-bs-target="#loginModal">
-                        LiveScores</a>
-                    <a href=""
-                        class="boldFive fontSize12px navA {{ request()->is('subscription') ? 'navActive' : '' }}"
-                        data-bs-toggle="modal" data-bs-target="#loginModal">
-                        Telegram VIP</a>
-                @else
-                    <a href="/" class="boldFive fontSize12px navA {{ request()->is('/') ? 'navActive' : '' }}"
-                        id="homeId">Home</a>
-                    <a href="/football"
-                        class="boldFive fontSize12px navA {{ request()->is(['football', 'fixture/*']) ? 'navActive' : '' }}">
-                        <!-- <img src="{{ asset('icons/SoccerBall.png') }}" class="me-1" alt=""> -->
-                        Football</a>
-                    <a href="/basketball"
-                        class="boldFive fontSize12px navA {{ request()->is(['basketball', 'basketfix/*']) ? 'navActive' : '' }}">
-                        <!-- <img src="{{ asset('icons/Basketball.png') }}" class="me-1" alt=""> -->
-                        Basketball</a>
-                    <a href="/tennis"
-                        class="boldFive fontSize12px navA {{ request()->is('tennis') ? 'navActive' : '' }}">
-                        <!-- <img src="{{ asset('icons/TennisBall.png') }}" class="me-1" alt=""> -->
-                        Tennis</a>
-                    <a href="/livescores"
-                        class="boldFive fontSize12px navA {{ request()->is('livescores') ? 'navActive' : '' }}">
-                        <!-- <img src="{{ asset('icons/TennisBall.png') }}" class="me-1" alt=""> -->
-                        LiveScores</a>
-                    <a href="/subscription"
-                        class="boldFive fontSize12px navA {{ request()->is('subscription') ? 'navActive' : '' }}">
-                        <!-- <img src="{{ asset('icons/TennisBall.png') }}" class="me-1" alt=""> -->
-                        Telegram VIP</a>
-                @endguest
-            </div>
+            <div class="wid100 mx-auto">
+                <div class="d-flex justify-content-between" style="overflow: scroll;">
+                    @guest
+                        <a href="/"
+                            class="boldFive d-block me-2 text-nowrap fontSize12px navA {{ request()->is('/') ? 'navActive' : '' }}"
+                            id="homeId">Home</a>
+                        <a href=""
+                            class="boldFive d-block me-2 text-nowrap fontSize12px navA {{ request()->is(['football', 'fixture/*']) ? 'navActive' : '' }}"
+                            data-bs-toggle="modal" data-bs-target="#loginModal">
+                            Football</a>
+                        <a href=""
+                            class="boldFive d-block me-2 text-nowrap fontSize12px navA {{ request()->is(['basketball', 'basketballfixture']) ? 'navActive' : '' }}"
+                            data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <!-- <img src="{{ asset('icons/Basketball.png') }}" class="me-1" alt=""> -->
+                            Basketball</a>
+                        <a href=""
+                            class="boldFive d-block me-2 text-nowrap fontSize12px navA {{ request()->is('league-table') ? 'navActive' : '' }}"
+                            data-bs-toggle="modal" data-bs-target="#loginModal">
+                            Leagues Table</a>
+                        <a href=""
+                            class="boldFive d-block me-2 text-nowrap fontSize12px navA {{ request()->is('livescores') ? 'navActive' : '' }}"
+                            data-bs-toggle="modal" data-bs-target="#loginModal">
+                            LiveScores</a>
+                        <a href=""
+                            class="boldFive d-block me-2 text-nowrap fontSize12px navA {{ request()->is('subscription') ? 'navActive' : '' }}"
+                            data-bs-toggle="modal" data-bs-target="#loginModal">
+                            Telegram VIP</a>
+                    @else
+                        <a href="/"
+                            class="boldFive d-block me-2 text-nowrap fontSize12px navA {{ request()->is('/') ? 'navActive' : '' }}"
+                            id="homeId">Home</a>
+                        <a href="/football"
+                            class="boldFive d-block me-2 text-nowrap fontSize12px navA {{ request()->is(['football', 'fixture/*']) ? 'navActive' : '' }}">
+                            <!-- <img src="{{ asset('icons/SoccerBall.png') }}" class="me-1" alt=""> -->
+                            Football</a>
+                        <a href="/basketball"
+                            class="boldFive d-block me-2 text-nowrap fontSize12px navA {{ request()->is(['basketball', 'basketfix/*']) ? 'navActive' : '' }}">
+                            <!-- <img src="{{ asset('icons/Basketball.png') }}" class="me-1" alt=""> -->
+                            Basketball</a>
+                        <a href="/league-table"
+                            class="boldFive d-block me-2 text-nowrap fontSize12px navA {{ request()->is('league-table') ? 'navActive' : '' }}">
+                            <!-- <img src="{{ asset('icons/TennisBall.png') }}" class="me-1" alt=""> -->
+                            Leagues Table</a>
+                        <a href="/livescores"
+                            class="boldFive d-block me-2 text-nowrap fontSize12px navA {{ request()->is('livescores') ? 'navActive' : '' }}">
+                            <!-- <img src="{{ asset('icons/TennisBall.png') }}" class="me-1" alt=""> -->
+                            LiveScores</a>
+                        <a href="/subscription"
+                            class="boldFive d-block me-2 text-nowrap fontSize12px navA {{ request()->is('subscription') ? 'navActive' : '' }}">
+                            <!-- <img src="{{ asset('icons/TennisBall.png') }}" class="me-1" alt=""> -->
+                            Telegram VIP</a>
 
+                    @endguest
+                </div>
+            </div>
         </div>
     </nav>
     <!-- Login Modal -->
@@ -352,9 +364,9 @@
                         </div>
                     </div>
                     <!-- <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                                        </div> -->
+                                                                                                                                                                                                                                                                                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                                                                                                                                                                                                                                                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                                                                                                                                                                                                                                                                                                                    </div> -->
                 </div>
             </div>
         </div>
@@ -378,6 +390,11 @@
                 Submit Event
                 --------------------------------------------
                 --------------------------------------------*/
+                const telegram = document.querySelectorAll(".telegramBlue");
+                const classes = ["mx-auto", "wid80", "glow", ]
+                telegram.forEach((element) => {
+                    element.classList.add(...classes);
+                })
                 $(document).on("submit", "#handleAjax", function() {
                     var e = this;
 

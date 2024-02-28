@@ -42,7 +42,10 @@
                     veniam illo obcaecati culpa maiores odit magni quaerat magnam neque autem laboriosam, porro
                     distinctio explicabo aliquam.
                 </div> --}}
-                <a href="https://paystack.com/pay/kgsb-vip"
+                {{-- <a href="https://paystack.com/pay/kgsb-vip"
+                    class="bgLinearGreen wid-40 wid-50-mobile text-decoration-none p-2 fontSize14px boldThree rounded-5 d-block text-center mb-3">Start
+                    Making Money with Us Naija !</a>  --}}
+                <a href="https://t.me/+BWWg98ga2RZmMjVk"
                     class="bgLinearGreen wid-40 wid-50-mobile text-decoration-none p-2 fontSize14px boldThree rounded-5 d-block text-center mb-3">Start
                     Making Money with Us Naija !</a>
 

@@ -14,9 +14,10 @@
                     Policy</a>
             </div>
             <div>
-                <a><img src="{{ asset('icons/facebook.png') }}" class="m-2" alt=""></a>
+                <a href="https://facebook.com/KGSBCommunity/"><img src="{{ asset('icons/facebook.png') }}"
+                        class="m-2" alt=""></a>
                 <a><img src="{{ asset('icons/twitter.png') }}" class="m-2" alt=""></a>
-                <a href="https://www.instagram.com/kingsanalytics/"><img src="{{ asset('icons/instagram.png') }}"
+                <a href="https://www.instagram.com/kgsbcommunity/"><img src="{{ asset('icons/instagram.png') }}"
                         class="m-2" alt=""></a>
                 <a href="https://t.me/+JuEe07nfSssxM2Y0"><img src="{{ asset('icons/telegramVector.png') }}"
                         class="m-2" alt=""></a>
@@ -39,9 +40,10 @@
                 Policy</a>
         </div>
         <div class="d-flex justify-content-center align-items-center">
-            <img src="{{ asset('icons/facebook.png') }}" class="m-2 wid9px" alt="">
+            <a href="https://facebook.com/KGSBCommunity/"><img src="{{ asset('icons/facebook.png') }}"
+                    class="m-2 wid9px" alt=""></a>
             <img src="{{ asset('icons/twitter.png') }}" class="m-2 wid16px" alt="">
-            <a href="https://www.instagram.com/kingsanalytics/"><img src="{{ asset('icons/instagram.png') }}"
+            <a href="https://www.instagram.com/kgsbcommunity/"><img src="{{ asset('icons/instagram.png') }}"
                     class="m-2 wid16px" alt=""></a>
             <a href="https://t.me/+JuEe07nfSssxM2Y0"><img src="{{ asset('icons/telegramVector.png') }}"
                     class="m-2 wid16px" alt=""></a>

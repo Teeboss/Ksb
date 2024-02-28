@@ -658,11 +658,11 @@ class basketballController extends Controller
         <div class='wid100 bgSocials p-3'>
         <p class='fontSize12px boldFive '>Bet on this match on</p>
         <div class='d-flex flex-wrap justify-content-between'>
-            <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
-            <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
-            <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
-            <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
-            <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
+            <img src='" . asset('icons/iconNavs.png') . "' class='wid45px' alt=''>
+            <img src='" . asset('icons/iconNavs.png') . "' class='wid45px' alt=''>
+            <img src='" . asset('icons/iconNavs.png') . "' class='wid45px' alt=''>
+            <img src='" . asset('icons/iconNavs.png') . "' class='wid45px' alt=''>
+            <img src='" . asset('icons/iconNavs.png') . "' class='wid45px' alt=''>
         </div>
     </div>
     <div class='bgWhite d-flex flex-wrap justify-content-between wid100 py-3 px-1 py-sm-5'>

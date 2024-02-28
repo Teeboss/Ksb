@@ -72,16 +72,16 @@ class footballController extends Controller
         if (Auth::check()) {   
                 return "        
                 <div class='modal fade' id='staticBackdrop" . $team->fixture->id . "' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
-                <div class='modal-dialog'>
-                    <div class='modal-content'>
-                    <div class='modal-body'>
-                    <iframe src='/fixture/".$team->fixture->id . "/" . $team->league->id."' frameborder='0' style='width: 100%; height: 400px; border: none;'></iframe>
+                    <div class='modal-dialog'>
+                        <div class='modal-content'>
+                            <div class='modal-body'>
+                                <iframe src='/fixture/".$team->fixture->id . "/" . $team->league->id."' frameborder='0' style='width: 100%; height: 400px; border: none;'></iframe>
+                            </div>
+                            <div class='modal-footer'>
+                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class='modal-footer'>
-                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                    </div>
-                    </div>
-                </div>
                 </div>
 
                 <tr class='pointers' data-bs-toggle='modal' data-bs-target='#staticBackdrop" . $team->fixture->id . "'>
@@ -93,30 +93,17 @@ class footballController extends Controller
                     <div class=' wid70 wid100Mobile mx-auto'>
                         <div class='d-flex align-items-center justify-content-between'>
                             <div class='d-flex justify-content-center'>
-                                <a href='https://www.betano.ng/' class='leftRa' sytle='padding: 3px;' ><img src='" . asset('icons/betano.png') . "' alt='' class='iconSmallLg' style='padding: 5px;'></a>
-                                <a href='https://www.betano.ng/' class='rightRa' style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;'> Bet Now</a>
+                                <a href='#' class='leftRa' sytle='padding: 3px;' ><img src='" . asset('icons/iconNavs.png') . "' alt='' class='iconSmallLg' style='padding: 5px;'></a>
+                                <a href='#' class='rightRa' style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;'> Bet Now</a>
                             </div>
                         </div>
                     </td>
                 </tr>
                ";
         } else {
-            return   "        
-                <div class='modal fade' id='staticBackdrop" . $team->fixture->id . "' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
-                <div class='modal-dialog'>
-                    <div class='modal-content'>
-                    <div class='modal-body'>
-                    <iframe src='/fixture/".$team->fixture->id . "/" . $team->league->id."' frameborder='0' style='width: 100%; height: 400px; border: none;'></iframe>
-                    </div>
-                    <div class='modal-footer'>
-                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-
+            return "        
                 <tr class='pointers' data-bs-toggle='modal' data-bs-target='#loginModal'>
-                    <td colspan='2' class='boldFour fontSize10px' ><img src='" . $team->league->flag  . "' alt='' class='wid8px'> " . $team->league->country . " | " . self::changeTimeZone($team->fixture->timezone, $team->fixture->date) . " <br> <span class='boldFive fontSize12px'>" . $team->teams->home->name . " vs " . $team->teams->away->name . "</span>
+               <td colspan='4' class='boldFour fontSize10px' ><img src='" . $team->league->flag  . "' alt='' class='wid8px'> " . $team->league->country . " | " . self::changeTimeZone($team->fixture->timezone, $team->fixture->date) . " <br> <span class='boldFive fontSize12px'>" . $team->teams->home->name . " vs " . $team->teams->away->name . "</span>
                     </td>
                     <td class='boldFive fontSize14px'>" . self::callPrediction($team) . "</td>
                     <td colspan='2' class='boldFive fontSize12px'>" . self::odd($team->fixture->id) . "</td>
@@ -124,8 +111,8 @@ class footballController extends Controller
                     <div class=' wid70 wid100Mobile mx-auto'>
                         <div class='d-flex align-items-center justify-content-between'>
                             <div class='d-flex justify-content-center'>
-                                <a href='https://www.betano.ng/' class='leftRa' sytle='padding: 3px;' ><img src='" . asset('icons/betano.png') . "' alt='' class='iconSmallLg' style='padding: 5px;'></a>
-                                <a href='https://www.betano.ng/' class='rightRa' style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;'> Bet Now</a>
+                                <a href='#' class='leftRa' sytle='padding: 3px;' ><img src='" . asset('icons/iconNavs.png') . "' alt='' class='iconSmallLg' style='padding: 5px;'></a>
+                                <a href='#' class='rightRa' style='color: white; background-color:red; font-size: 10px; font-weight: 700; white-space: nowrap; text-decoration: none; padding: 5px;'> Bet Now</a>
                             </div>
                         </div>
                     </td>
@@ -641,11 +628,11 @@ class footballController extends Controller
             <div class='wid100 bgSocials p-3'>
                 <p class='fontSize12px boldFive '>Bet on this match on</p>
                 <div class='d-flex flex-wrap justify-content-between'>
-                    <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
-                    <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
-                    <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
-                    <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
-                    <img src='" . asset('icons/betano.png') . "' class='wid45px' alt=''>
+                    <img src='" . asset('icons/iconNavs.png') . "' class='wid45px' alt=''>
+                    <img src='" . asset('icons/iconNavs.png') . "' class='wid45px' alt=''>
+                    <img src='" . asset('icons/iconNavs.png') . "' class='wid45px' alt=''>
+                    <img src='" . asset('icons/iconNavs.png') . "' class='wid45px' alt=''>
+                    <img src='" . asset('icons/iconNavs.png') . "' class='wid45px' alt=''>
                 </div>
             </div>
             <div class='bgWhite d-flex flex-wrap justify-content-between wid100 py-3 px-1 py-sm-5'>

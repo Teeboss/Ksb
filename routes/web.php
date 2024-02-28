@@ -28,8 +28,9 @@ Route::get('/', function () {
     $bannerLong = DB::table('banner_uploads')->where('bannertype', 'long')->first();
     $bannerShort = DB::table('banner_uploads')->where('bannertype', 'wide')->first();
     $bannerHome = DB::table('banner_uploads')->where('bannertype', 'Home')->first();
+    $today_games = DB::table('today_games')->orderBy('id', 'desc')->first();
     $news = DB::table('news_uploads')->orderBy('id', 'desc')->take(4)->get();
-    return view("home", ['bannerLong' => $bannerLong, 'bannerShort' => $bannerShort, "newses" => $news, 'bannerHome' => $bannerHome]);
+    return view("home", ['bannerLong' => $bannerLong, 'bannerShort' => $bannerShort, "newses" => $news, 'bannerHome' => $bannerHome, "today_games" => $today_games]);
 })->name('home');
 
 Route::get('/fixture/{fixtureId}/{leagueId}', function () {
@@ -72,6 +73,12 @@ Route::get('livescores', function () {
 
 Route::get('/subscription', function () {
     return view('subscribe');
+});
+
+Route::get('/league-table', function () {
+     $bannerLong = DB::table('banner_uploads')->where('bannertype', 'long')->first();
+    $bannerShort = DB::table('banner_uploads')->where('bannertype', 'wide')->first();
+    return view("league-table", ['bannerLong' => $bannerLong, 'bannerShort' => $bannerShort]);
 });
 
 Route::get('/news', function () {

@@ -122,6 +122,10 @@
                         class="boldFive fontSize16px navA {{ request()->is(['subscription', 'subscription']) ? 'navActive' : '' }}"
                         data-bs-toggle="modal" data-bs-target="#loginModal">
                         Telegram VIP</a>
+                    <a href="/league-table"
+                        class="boldFive fontSize16px navA {{ request()->is(['league-table', 'league-table']) ? 'navActive' : '' }}"
+                        data-bs-toggle="modal" data-bs-target="#loginModal">
+                        Leagues Table</a>
                 @else
                     <a href="/" class="boldFive fontSize16px navA {{ request()->is('/') ? 'navActive' : '' }}"
                         id="homeId">Home</a>
@@ -143,6 +147,9 @@
                     <a href="/subscription"
                         class="boldFive fontSize16px navA {{ request()->is(['subscription', 'subscription']) ? 'navActive' : '' }}">
                         Telegram VIP</a>
+                    <a href="/league-table"
+                        class="boldFive fontSize16px navA {{ request()->is(['league-table', 'league-table']) ? 'navActive' : '' }}">
+                        Leagues Table</a>
                 @endguest
             </div>
         </div>
@@ -189,6 +196,10 @@
                         class="boldFive fontSize12px navA {{ request()->is('subscription') ? 'navActive' : '' }}"
                         data-bs-toggle="modal" data-bs-target="#loginModal">
                         Telegram VIP</a>
+                    <a href=""
+                        class="boldFive fontSize12px navA {{ request()->is('league-table') ? 'navActive' : '' }}"
+                        data-bs-toggle="modal" data-bs-target="#loginModal">
+                        Leagues Table</a>
                 @else
                     <a href="/" class="boldFive fontSize12px navA {{ request()->is('/') ? 'navActive' : '' }}"
                         id="homeId">Home</a>
@@ -211,7 +222,10 @@
                     <a href="/subscription"
                         class="boldFive fontSize12px navA {{ request()->is('subscription') ? 'navActive' : '' }}">
                         <!-- <img src="{{ asset('icons/TennisBall.png') }}" class="me-1" alt=""> -->
-                        Telegram VIP</a>
+                        League Table</a>
+                    <a href="/league-table"
+                        class="boldFive fontSize12px navA {{ request()->is('league-table') ? 'navActive' : '' }}">
+                        Leagues Table</a>
                 @endguest
             </div>
 

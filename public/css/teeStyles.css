@@ -292,9 +292,53 @@ a {
     height: 90px;
 }
 .higt125px {
-    max-height: 190px;
+    /* max-height: 190px; */
+    max-height: 270px;
 }
+/* text-shadow: 4px 0px 5px rgba(230,25,51,0.6); */
+/* text-shadow: 0 0 20px #eeeeee, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, */
+/* 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6; */
 
+.glow {
+    font-size: 70px;
+    color: #ffffff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+@-webkit-keyframes glow {
+    from {
+        /* text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000,
+            0 0 40px #000000, 0 0 50px #9554b3, 0 0 60px #9554b3,
+            0 0 70px #9554b3; */
+        /* text-shadow: 0px 0px 13px rgba(0, 0, 0, 1); */
+        transform: scale(1);
+    }
+    to {
+        /* text-shadow: 0 0 20px #eeeeee, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
+            0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6,
+            0 0 80px #ff4da6; */
+        /* text-shadow: 0px 0px 13px rgba(214, 0, 54, 1); */
+        transform: scale(1.2);
+    }
+}
+@keyframes glow {
+    from {
+        /* text-shadow: 0 0 10px #eeeeee, 0 0 20px #000000, 0 0 30px #000000,
+            0 0 40px #000000, 0 0 50px #9554b3, 0 0 60px #9554b3,
+            0 0 70px #9554b3; */
+        /* text-shadow: 0px 0px 13px rgba(0, 0, 0, 1); */
+        transform: scale(1);
+    }
+    to {
+        /* text-shadow: 0 0 20px #eeeeee, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
+            0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6,
+            0 0 80px #ff4da6; */
+        /* text-shadow: 0px 0px 13px rgba(214, 0, 54, 1); */
+        transform: scale(1.2);
+    }
+}
 .shortBannerHeight {
     max-height: 250px;
     overflow: hidden;
@@ -506,7 +550,7 @@ a {
 .telegramBlue {
     background: linear-gradient(180deg, #2aabee 0%, #229ed9 100%);
     transition: all 0.2s ease-in-out;
-    border: solid 1px inherit;
+    border: solid 1px white;
 }
 .telegramBlue:hover {
     color: #2aabee;
@@ -595,12 +639,13 @@ a {
 }
 :root {
     --linerColor: linear-gradient(to right, #00b67a 0, #047550 100%);
+    --bgGrey: #f3f3f3;
 }
 .bgLinearGreen {
     color: #fff;
     background: linear-gradient(to right, #00b67a 0, #047550 100%);
     transition: all 0.3s ease-in-out;
-    border: 0 none !important;
+    border: solid 1px #006633 !important;
 }
 .bgLinearGreen:hover {
     background: #fff;
@@ -910,6 +955,7 @@ ul {
 .fontSize10px {
     font-size: 10px;
 }
+
 .fontSize6px {
     font-size: 6px;
 }
@@ -1407,19 +1453,19 @@ th {
   
   /* Add Animatio;n */
 /* .modal-content{  
-	-webkit-animation-name: zoom;
+	-webkit-animation-name: transform;
 	-webkit-animation-duration: 0.6s;
-	animation-name: zoom;
+	animation-name: transform;
 	animation-duration: 0.6s;
   } */
 
-/* @-webkit-keyframes zoom {
-	from {-webkit-transform:scale(0)} 
+/* @-webkit-keyframes transform {
+	from {-webkit-transform:scale(1)} 
 	to {-webkit-transform:scale(1)}
   }
   
-  @keyframes zoom {
-	from {transform:scale(0)}  
+  @keyframes transform {
+	from {transform:scale(1)}  
 	to {transform:scale(1)}
   } */
 
@@ -1588,6 +1634,7 @@ svg {
 .leftRa {
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
+    background-color: var(--bgGrey);
     border-top: solid #0f46dc 1px;
     border-bottom: solid #0f46dc 1px;
     border-left: solid #0f46dc 1px;

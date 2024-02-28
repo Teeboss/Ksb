@@ -13,8 +13,8 @@
         </div>
     @else
         <!-- <div class="mx-auto m-2 wid80 wid100Mobile d-block higt125px" style="overflow: hidden;">
-                            <a href="/contact" class="d-block wid100 fontSize34px blackKsb boldEight text-center">PLACE YOUR ADVERTISEMENT HERE</a>
-                        </div> -->
+                                    <a href="/contact" class="d-block wid100 fontSize34px blackKsb boldEight text-center">PLACE YOUR ADVERTISEMENT HERE</a>
+                                </div> -->
         <div class="mx-auto m-2 wid80 wid100Mobile d-block higt125px" style="overflow: hidden;">
             <a href="#"><img src="{{ asset('icons/longBanner.gif') }}" class="wid100" alt=""></a>
         </div>
@@ -240,7 +240,7 @@
                         decisions, look no further than KGS BET. Join today and start reaping the benefits of our expert
                         predictions!<br><br>
                     </p>
-                    <a href="https://t.me/+JuEe07nfSssxM2Y0"
+                    <a href="https://t.me/+BWWg98ga2RZmMjVk"
                         class="telegramBlue noneTextDecoration centerText d-block my-5 white fontSize16px p-2 boldSix wid100"><img
                             src="{{ asset('icons/telegramVector.png') }}" alt=""> Click here to join telegram
                         group</a>

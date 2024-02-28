@@ -14,8 +14,8 @@
         </div>
     @else
         <!-- <div class="mx-auto m-2 wid80 wid100Mobile d-block higt125px" style="overflow: hidden;">
-                                                <a href="/contact" class="d-block wid100 fontSize34px blackKsb boldEight text-center">PLACE YOUR ADVERTISEMENT HERE</a>
-                                            </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                <a href="/contact" class="d-block wid100 fontSize34px blackKsb boldEight text-center">PLACE YOUR ADVERTISEMENT HERE</a>
+                                                                                                                                                                                                                                                                                                                                                                            </div> -->
         <div class="mx-auto m-2 wid80 wid100Mobile d-block higt125px" style="overflow: hidden;">
             <a href="#"><img src="{{ asset('icons/longBanner.gif') }}" class="wid100" alt=""></a>
         </div>
@@ -103,37 +103,22 @@
                 </div>
             </div>
             <div class="p-2 order-1 order-md-1 bgWhite mx-auto wid70 wid100Mobile" id="bodyVal">
-                <p class="fontSize16px my-3 boldFive">Today Free Games</p>
-                <div class="table-responsive shadow mb-4">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr class="bgShaddyWhite">
-                                <td colspan="8" class="white"><img src="{{ asset('icons/football/qater.png') }}"
-                                        alt=""> Tennis Predictions</td>
-                            </tr>
-                            <tr class="boldFour">
-                                <td colspan="4" class="fontSize10px">Events</td>
-                                <td class="fontSize10px">Tournament</td>
-                                <td class="fontSize10px">Tip(Game Handicap)</td>
-                                <td class="fontSize10px centerText">Odd</td>
-                                <td colspan="2"></td>
-                            </tr>
-                        </thead>
-
-                        <tbody id="tennisGames">
-                            <tr>
-                                <td colspan="6" class="bgGrey">
-                                    <div class="d-block mx-auto">
-                                        <img src="{{ asset('icons/loaders/Soccerball.gif') }}" alt=""
-                                            class="wid10 d-block mx-auto">
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div id="loadGa" class="d-none">
-
-                    </div>
+                <div class="d-block wid80 wid100Mobile mx-auto">
+                    {{-- <p class="fontSize16px my-3 boldFive">English premier League</p> --}}
+                    <iframe frameborder="0" scrolling="yes" class="wid100"
+                        style="margin-bottom: 0px; padding-bottom: 0px" height="700"
+                        src="https://www.fctables.com/england/premier-league/iframe/?type=table&lang_id=2&country=67&template=10&team=&timezone=Pacific/Midway&time=24&po=1&ma=1&wi=1&dr=1&los=1&gf=0&ga=0&gd=0&pts=1&ng=1&form=1&width=520&height=700&font=Verdana&fs=12&lh=22&bg=FFFFFF&fc=333333&logo=1&tlink=1&ths=1&thb=1&thba=FFFFFF&thc=000000&bc=dddddd&hob=f5f5f5&hobc=ebe7e7&lc=333333&sh=1&hfb=1&hbc=3bafda&hfc=FFFFFF"></iframe>
+                    <p class="fontSize16px my-3 boldFive" style="margin-top: -32px;">Spanish LaLiga</p>
+                    <iframe frameborder="0" scrolling="yes" style="margin-top: -122px;" class="wid100"
+                        height="700"
+                        src="https://www.fctables.com/spain/liga-bbva/iframe/?type=table&lang_id=2&country=201&template=43&timezone=Pacific/Midway&time=24&po=1&ma=1&wi=1&dr=1&los=1&gf=0&ga=0&gd=0&pts=1&ng=1&form=1&width=520&height=700&font=Verdana&fs=12&lh=22&bg=FFFFFF&fc=333333&logo=1&tlink=1&ths=1&thb=1&thba=FFFFFF&thc=000000&bc=dddddd&hob=f5f5f5&hobc=ebe7e7&lc=333333&sh=1&hfb=1&hbc=3bafda&hfc=FFFFFF"></iframe>
+                    <p class="fontSize16px my-3 boldFive" style="margin-top: -32px;">Spanish LaLiga</p>
+                    <iframe frameborder="0" scrolling="yes" style="margin-top: -122px;" class="wid100"
+                        height="700"
+                        src="https://www.fctables.com/germany/1-bundesliga/iframe/?type=table&lang_id=2&country=83&template=16&timezone=Pacific/Midway&time=24&po=1&ma=1&wi=1&dr=1&los=1&gf=0&ga=0&gd=0&pts=1&ng=1&form=1&width=520&height=700&font=Verdana&fs=12&lh=22&bg=FFFFFF&fc=333333&logo=1&tlink=1&ths=1&thb=1&thba=FFFFFF&thc=000000&bc=dddddd&hob=f5f5f5&hobc=ebe7e7&lc=333333&sh=1&hfb=1&hbc=3bafda&hfc=FFFFFF"></iframe>
+                    <iframe frameborder="0" scrolling="yes" style="margin-top: -132px;" class="wid100"
+                        height="700"
+                        src="https://www.fctables.com/france/ligue-1/iframe/?type=table&lang_id=2&country=77&template=15&timezone=Pacific/Midway&time=24&po=1&ma=1&wi=1&dr=1&los=1&gf=0&ga=0&gd=0&pts=1&ng=1&form=1&width=520&height=700&font=Verdana&fs=12&lh=22&bg=FFFFFF&fc=333333&logo=1&tlink=1&ths=1&thb=1&thba=FFFFFF&thc=000000&bc=dddddd&hob=f5f5f5&hobc=ebe7e7&lc=333333&sh=1&hfb=1&hbc=3bafda&hfc=FFFFFF"></iframe>
                 </div>
                 <div class="wid100 bgBlue mt-4 longBannerHeight">
                     <a href="https://clcr.me/xsOTPT"><img src="{{ asset('icons/football/longBanner.gif') }}"
@@ -230,28 +215,26 @@
             }
         );
 
-        if (localStorage.getItem('loadGamesLocal') !== null) {
-            $('#tennisGames').html(localStorage.getItem('loadGamesload'));
-            //      $('#tennisGames').html($('#tennisGames').data('old-state'));
-        } else {
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: '/loadTennisGames',
-                type: 'GET',
-                success: (data) => {
-                    $("#tennisGames").html(data)
-                    localStorage.setItem('loadGamesload', data);
-                }
+        // if (localStorage.getItem('loadGamesLocal') !== null) {
+        //     $('#tennisGames').html($('#tennisGames').data('old-state'));
+        // } else {
+        //     $.ajax({
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         url: '/loadTennisGames',
+        //         type: 'GET',
+        //         success: (data) => {
+        //             $("#tennisGames").html(data)
+        //         }
 
-            })
-            $('#tennisGames').data('old-state', $('#tennisGames').html());
-            localStorage.setItem('loadGamesLocal', $('#tennisGames').data('old-state'));
-        }
-        setTimeout(function() {
-            localStorage.removeItem('loadGamesLocal');
-        }, 120000);
+        //     })
+        //     $('#tennisGames').data('old-state', $('#tennisGames').html());
+        //     localStorage.setItem('loadGamesLocal', $('#tennisGames').data('old-state'));
+        // }
+        // setTimeout(function() {
+        //     localStorage.removeItem('loadGamesLocal');
+        // }, 120000);
     })
 
     function loadGames(leagueId) {
