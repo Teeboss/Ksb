@@ -47,7 +47,7 @@ class basketballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-basketball.p.rapidapi.com'
             ),
         ));
@@ -108,7 +108,7 @@ class basketballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-basketball.p.rapidapi.com'
             ),
         ));
@@ -156,7 +156,7 @@ class basketballController extends Controller
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
                 'X-RapidAPI-Host: api-basketball.p.rapidapi.com',
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650'
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key')
             ),
         ));
 
@@ -197,7 +197,7 @@ class basketballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-basketball.p.rapidapi.com'
             ),
         ));
@@ -252,7 +252,7 @@ class basketballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-basketball.p.rapidapi.com'
             ),
         ));
@@ -336,7 +336,7 @@ class basketballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-basketball.p.rapidapi.com'
             ),
         ));
@@ -390,7 +390,7 @@ class basketballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-basketball.p.rapidapi.com'
             ),
         ));
@@ -444,7 +444,7 @@ class basketballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-basketball.p.rapidapi.com'
             ),
         ));
@@ -500,7 +500,7 @@ class basketballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-basketball.p.rapidapi.com'
             ),
         ));
@@ -575,7 +575,7 @@ class basketballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-basketball.p.rapidapi.com'
             ),
         ));
@@ -612,7 +612,7 @@ class basketballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-basketball.p.rapidapi.com'
             ),
         ));
@@ -693,7 +693,7 @@ class basketballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-basketball.p.rapidapi.com'
             ),
         ));
@@ -733,7 +733,7 @@ class basketballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-basketball.p.rapidapi.com'
             ),
         ));
@@ -807,7 +807,7 @@ class basketballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-basketball.p.rapidapi.com'
             ),
         ));

@@ -108,7 +108,7 @@ Route::get('tennis', function () {
 })->middleware('auth');
 
 /* -------------------------------- Football Routes -------------------------------- */
-Route::get('/adminarea', [adminController::class, 'index']);
+Route::get('/adminarea', [adminController::class, 'index'])->middleware('admin');
 
 Route::get('/adminlogin', [adminController::class, 'loginPage']);
 
@@ -118,15 +118,15 @@ Route::get('recovery', function () {
     return view('reset');
 });
 
-Route::post('forgotpassword', [ForgotPassword::class, 'store'])->name('forgot.store');
+Route::post('forgotpassword', [ForgotPassword::class, 'store'])->name('forgot.store')->middleware('throttle:5,1');
 
-Route::post('subscription', [ForgotPassword::class, 'store'])->name('subscribe.store');
+Route::post('subscription', [ForgotPassword::class, 'store'])->name('subscribe.store')->middleware('throttle:5,1');
 
-Route::post('recovery', [ForgotPassword::class, 'rest'])->name('reset.store');
+Route::post('recovery', [ForgotPassword::class, 'rest'])->name('reset.store')->middleware('throttle:5,1');
 
 Route::get('contact', [ContactController::class, 'index']);
 
-Route::post('contact', [ContactController::class, 'store'])->name('contact.us.store');
+Route::post('contact', [ContactController::class, 'store'])->name('contact.us.store')->middleware('throttle:5,1');
 
 Route::get('/dashboard', [adminController::class, 'dashboardAdmin'])->name('dashboard.indexs');
 
@@ -136,13 +136,13 @@ Route::get('payday', function() {
     return redirect('https://t.me/+nUBxC3rSIigyMDc0');
 });
 
-Route::get('/newsUpload', [NewsUploadController::class, 'dashboardAdmin'])->name('dashboard.index');
+Route::get('/newsUpload', [NewsUploadController::class, 'dashboardAdmin'])->name('dashboard.index')->middleware('admin');
 
 Route::get('/loadFixture/{fixtureId}/{leagueId}', [footballController::class, 'loadFixtureData'])->middleware('auth');
 
-Route::delete('/dashboard/{id}', [adminController::class, 'destroy'])->name('banner.destroy');
+Route::delete('/dashboard/{id}', [adminController::class, 'destroy'])->name('banner.destroy')->middleware('admin');
 
-Route::delete('/newsUpload/{id}', [NewsUploadController::class, 'destroy'])->name('news.destroy');
+Route::delete('/newsUpload/{id}', [NewsUploadController::class, 'destroy'])->name('news.destroy')->middleware('admin');
 
 Route::get('/loadHomeGames', [footballController::class, 'loadGames']);
 
@@ -152,9 +152,9 @@ Route::get('/loadAmericaGames', [footballController::class, 'loadAmericaGames'])
 
 Route::get('/loadSpainGames', [footballController::class, 'loadSpainGames']);
 
-Route::post('/uploadFile', [adminController::class, 'fileUploadToServer'])->name('uploadFile');
+Route::post('/uploadFile', [adminController::class, 'fileUploadToServer'])->name('uploadFile')->middleware('admin');
 
-Route::post('/uploadFileNews', [NewsUploadController::class, 'fileUploadToServer'])->name('uploadFileNews');
+Route::post('/uploadFileNews', [NewsUploadController::class, 'fileUploadToServer'])->name('uploadFileNews')->middleware('admin');
 
 Route::get('/loadItalyGames', [footballController::class, 'loadItalyGames']);
 
@@ -168,10 +168,10 @@ Route::get('/loadBasketballGames', [basketballController::class, 'loadGames']);
 Route::get('/loadTennisGames', [tennisController::class, 'loadGames']);
 Route::get('/countries', [tennisController::class, 'countries']);
 Route::get('post-registration', [AuthController::class, 'index']);
-Route::post('post-login', [AuthController::class, "postLogin"])->name('login.post');
-Route::post('post-registration', [AuthController::class, "postRegistration"])->name('registration.post');
-Route::post('post-registration-admin', [adminController::class, "postRegistration"])->name('adminRegistration.post');
-Route::post('post-login-admin', [adminController::class, "logine"])->name('loginAdmin.post');
+Route::post('post-login', [AuthController::class, "postLogin"])->name('login.post')->middleware('throttle:10,1');
+Route::post('post-registration', [AuthController::class, "postRegistration"])->name('registration.post')->middleware('throttle:10,1');
+Route::post('post-registration-admin', [adminController::class, "postRegistration"])->name('adminRegistration.post')->middleware('admin');
+Route::post('post-login-admin', [adminController::class, "logine"])->name('loginAdmin.post')->middleware('throttle:10,1');
 Route::get('logout', [AuthController::class, "logout"])->name('logout');
 /* -------------------------------- Basketball Routes -------------------------------- */
 Route::get('/loadCountriesBasket', [basketballController::class, 'countries']);
