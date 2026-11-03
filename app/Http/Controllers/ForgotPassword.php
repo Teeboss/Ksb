@@ -16,42 +16,55 @@ class ForgotPassword extends Controller
     {
         return view("forgot");
     }
+    /**
+     * How long a reset pin stays valid, in minutes.
+     */
+    private const PIN_TTL_MINUTES = 30;
+
     public function store(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
         ]);
-        $pin = rand(99999, 999999);
+
         $email = $request->input("email");
-        $request->merge(["pin" => $pin]);
-        if (DB::table('users')->where('email', $email)->exists()) {
-            if (DB::table('forgot_password_models')->where('email', $email)->exists()) {
-                return redirect()->back()
-                    ->with(['successfor' => 'An email has been sent containing a reset password pin you might want to check your spam folder, sometimes mails get redirected.']);
-            } else {
-                ForgotPasswordModel::create($request->all());
-                return redirect()->back()
-                    ->with(['successfor' => 'An email has been sent containing a reset password pin.']);
-            }
-        } else {
-            return redirect()->back()
-                ->with(['noMail' => 'Your Email Address does not appear to be available']);
+        $message = 'If that email is registered, a reset pin has been sent. Check your spam folder too.';
+
+        if (User::where('email', $email)->exists()) {
+            // replace any older pin so the user can ask for a new one
+            ForgotPasswordModel::where('email', $email)->delete();
+            ForgotPasswordModel::create([
+                'email' => $email,
+                'pin' => (string) random_int(100000, 999999),
+            ]);
         }
+
+        // same answer either way, so this form can't be used to find accounts
+        return redirect()->back()->with(['successfor' => $message]);
     }
 
     public function rest(Request $request)
     {
         $request->validate([
-            'pin' => 'required|max:6',
-            'password' => 'required',
+            'email' => 'required|email',
+            'pin' => 'required|digits:6',
+            'password' => 'required|min:6',
         ]);
-        if (DB::table('forgot_password_models')->where('pin', $request->input('pin'))->exists()) {
-            // 
-            $email = DB::table('forgot_password_models')->select('email')->where('pin', $request->input('pin'))->first();
-            User::where('email', $email->email)->update(['password' => Hash::make($request->input('password'))]);
+
+        $reset = ForgotPasswordModel::where('email', $request->input('email'))
+            ->where('pin', $request->input('pin'))
+            ->where('created_at', '>=', now()->subMinutes(self::PIN_TTL_MINUTES))
+            ->first();
+
+        if ($reset) {
+            User::where('email', $reset->email)->update(['password' => Hash::make($request->input('password'))]);
+            // a pin works once
+            ForgotPasswordModel::where('email', $reset->email)->delete();
+
             return redirect()->back()
                 ->with(['recovery' => 'You will now be redirected to login']);
         }
+
         return redirect()->back()
             ->with(['pinMsg' => 'Pin expired or check your mail and try again']);
     }

@@ -44,7 +44,7 @@ class loadTodayGames extends Command
                 "cache-control: no-cache",
                 "postman-token: b1e1fe16-42e9-60b7-0f06-69d5f0a075b0",
                 "x-rapidapi-host: api-football-v1.p.rapidapi.com",
-                "x-rapidapi-key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650"
+                "x-rapidapi-key: " . config('services.rapidapi.key')
             ),
         ));
 

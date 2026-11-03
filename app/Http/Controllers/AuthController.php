@@ -30,6 +30,7 @@ class AuthController extends Controller
             ]);
         } else {
             if (Auth::attempt($request->only(['email', 'password']))) {
+                $request->session()->regenerate();
                 # code...
                 return response()->json([
                     'status' => true,
@@ -62,6 +63,7 @@ class AuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
         Auth::login($check);
+        $request->session()->regenerate();
 
         return response()->json([
             "status" => true,
@@ -78,10 +80,11 @@ class AuthController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-    function logout()
+    function logout(Request $request)
     {
-        Session::flush();
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return Redirect('/');
     }

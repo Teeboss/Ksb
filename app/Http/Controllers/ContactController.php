@@ -21,7 +21,7 @@ class ContactController extends Controller
             'message' => 'required'
         ]);
 
-        Contact::create($request->all());
+        Contact::create($request->only(['email', 'subject', 'message']));
 
         return redirect()->back()
             ->with(['success' => 'Thank you for contact us. we will contact you shortly.']);

@@ -20,7 +20,7 @@
     </div>
     <div class="wid60 wid100Mobile d-block mx-sm-auto" style="overflow: scroll;">
         <div id="wg-api-basketball-games" data-host="api-basketball.p.rapidapi.com"
-            data-key="de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650" data-date="" data-league=""
+            data-key="{{ config('services.rapidapi.key') }}" data-date="" data-league=""
             data-season="2022" data-theme="" data-refresh="15" data-show-toolbar="true" data-show-errors="false"
             data-show-logos="true" data-modal-game="true" data-modal-standings="true" data-modal-show-logos="true">
         </div>

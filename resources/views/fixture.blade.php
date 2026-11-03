@@ -23,7 +23,7 @@
 
     <div class="wid60 wid100Mobile d-block mx-sm-auto" style="overflow: scroll;">
         <div id="wg-api-football-standings" data-host="api-football-v1.p.rapidapi.com"
-            data-key="de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650" data-league="{{ request()->leagueId }}"
+            data-key="{{ config('services.rapidapi.key') }}" data-league="{{ request()->leagueId }}"
             data-team="" data-season="2023" data-theme="" data-show-errors="false" data-show-logos="true"
             class="wg_loader"></div>
     </div>

@@ -106,7 +106,7 @@
                 <p class="fontSize16px my-3 boldFive">Soccer LiveScores for you</p>
                 <div class="table-responsive shadow mb-4">
                     <div id="wg-api-football-games" data-host="api-football-v1.p.rapidapi.com"
-                        data-key="de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650" data-date="" data-league=""
+                        data-key="{{ config('services.rapidapi.key') }}" data-date="" data-league=""
                         data-season="" data-theme="" data-refresh="15" data-show-toolbar="true"
                         data-show-errors="false" data-show-logos="true" data-modal-game="true"
                         data-modal-standings="true" data-modal-show-logos="true">

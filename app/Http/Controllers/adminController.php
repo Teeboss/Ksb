@@ -45,6 +45,7 @@ class adminController extends Controller
             ]);
         } else {
             if (Auth::guard('admin')->attempt($request->only(['email', 'password']))) {
+                $request->session()->regenerate();
                 return redirect()->intended('dashboard')->withSuccess('Sign in');
             }
             return redirect("adminlogin")->withSuccess('Login details are not valid');
@@ -65,8 +66,7 @@ class adminController extends Controller
             ]);
         }
         $data = $request->all();
-        $check = $this->create($data);
-        Auth::guard('admin')->login($check);
+        $this->create($data);
         return response()->json([
             "status" => true,
         ]);
@@ -87,7 +87,7 @@ class adminController extends Controller
         $data = array();
 
         $validator = Validator::make($request->all(), [
-            'file' => 'required|mimes:png,jpg,jpeg,csv,txt,gif,pdf|max:2048',
+            'file' => 'required|file|mimes:png,jpg,jpeg,gif,pdf|max:2048',
             'bannertype' => 'required'
         ]);
 
@@ -100,10 +100,12 @@ class adminController extends Controller
             if ($request->file('file')) {
 
                 $file = $request->file('file');
-                $filename = time() . '_' . $file->getClientOriginalName();
+                // random name + extension guessed from the file contents, so a
+                // client can't upload e.g. shell.php into the public folder
+                $filename = $file->hashName();
 
                 // File extension
-                $extension = $file->getClientOriginalExtension();
+                $extension = $file->extension();
 
                 // File upload location
                 $location = 'files';
@@ -144,10 +146,11 @@ class adminController extends Controller
         return redirect()->route('dashboard.index');
     }
 
-    function logout()
+    function logout(Request $request)
     {
-        Session::flush();
         Auth::guard("admin")->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return Redirect('/adminlogin');
     }

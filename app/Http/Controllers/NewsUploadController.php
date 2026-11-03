@@ -25,7 +25,7 @@ class NewsUploadController extends Controller
         $data = array();
 
         $validator = Validator::make($request->all(), [
-            'file' => 'required|mimes:png,jpg,jpeg,csv,txt,gif,pdf|max:2048',
+            'file' => 'required|file|mimes:png,jpg,jpeg,gif,pdf|max:2048',
             'newstitle' => 'required'
         ]);
 
@@ -38,10 +38,12 @@ class NewsUploadController extends Controller
             if ($request->file('file')) {
 
                 $file = $request->file('file');
-                $filename = time() . '_' . $file->getClientOriginalName();
+                // random name + extension guessed from the file contents, so a
+                // client can't upload e.g. shell.php into the public folder
+                $filename = $file->hashName();
 
                 // File extension
-                $extension = $file->getClientOriginalExtension();
+                $extension = $file->extension();
 
                 // File upload location
                 $location = 'files';

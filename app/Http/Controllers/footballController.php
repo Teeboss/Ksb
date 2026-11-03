@@ -37,7 +37,7 @@ class footballController extends Controller
                 "cache-control: no-cache",
                 "postman-token: b1e1fe16-42e9-60b7-0f06-69d5f0a075b0",
                 "x-rapidapi-host: api-football-v1.p.rapidapi.com",
-                "x-rapidapi-key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650"
+                "x-rapidapi-key: " . config('services.rapidapi.key')
             ),
         ));
 
@@ -146,7 +146,7 @@ class footballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-football-v1.p.rapidapi.com'
             ),
         ));
@@ -224,7 +224,7 @@ class footballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-football-v1.p.rapidapi.com'
             ),
         ));
@@ -271,7 +271,7 @@ class footballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-football-v1.p.rapidapi.com'
             ),
         ));
@@ -309,7 +309,7 @@ class footballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-football-v1.p.rapidapi.com'
             ),
         ));
@@ -358,7 +358,7 @@ class footballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-football-v1.p.rapidapi.com'
             ),
         ));
@@ -407,7 +407,7 @@ class footballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-football-v1.p.rapidapi.com'
             ),
         ));
@@ -456,7 +456,7 @@ class footballController extends Controller
                 "cache-control: no-cache",
                 "postman-token: b1e1fe16-42e9-60b7-0f06-69d5f0a075b0",
                 "x-rapidapi-host: api-football-v1.p.rapidapi.com",
-                "x-rapidapi-key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650"
+                "x-rapidapi-key: " . config('services.rapidapi.key')
             ),
         ));
 
@@ -505,7 +505,7 @@ class footballController extends Controller
                 "cache-control: no-cache",
                 "postman-token: b1e1fe16-42e9-60b7-0f06-69d5f0a075b0",
                 "x-rapidapi-host: api-football-v1.p.rapidapi.com",
-                "x-rapidapi-key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650"
+                "x-rapidapi-key: " . config('services.rapidapi.key')
             ),
         ));
 
@@ -540,7 +540,7 @@ class footballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-football-v1.p.rapidapi.com'
             ),
         ));
@@ -600,7 +600,7 @@ class footballController extends Controller
                 "cache-control: no-cache",
                 "postman-token: b1e1fe16-42e9-60b7-0f06-69d5f0a075b0",
                 "x-rapidapi-host: api-football-v1.p.rapidapi.com",
-                "x-rapidapi-key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650"
+                "x-rapidapi-key: " . config('services.rapidapi.key')
             ),
         ));
 
@@ -682,7 +682,7 @@ class footballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-football-v1.p.rapidapi.com'
             ),
         ));
@@ -766,7 +766,7 @@ class footballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-football-v1.p.rapidapi.com'
             ),
         ));
@@ -849,7 +849,7 @@ class footballController extends Controller
                 "cache-control: no-cache",
                 "postman-token: b1e1fe16-42e9-60b7-0f06-69d5f0a075b0",
                 "x-rapidapi-host: api-football-v1.p.rapidapi.com",
-                "x-rapidapi-key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650"
+                "x-rapidapi-key: " . config('services.rapidapi.key')
             ),
         ));
 
@@ -903,7 +903,7 @@ class footballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-football-v1.p.rapidapi.com'
             ),
         ));
@@ -958,7 +958,7 @@ class footballController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_HTTPHEADER => array(
-                'X-RapidAPI-Key: de69946105msh74b7a8ee65acaa7p1503aejsna90bccd18650',
+                'X-RapidAPI-Key: ' . config('services.rapidapi.key'),
                 'X-RapidAPI-Host: api-football-v1.p.rapidapi.com'
             ),
         ));

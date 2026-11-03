@@ -17,17 +17,24 @@
             @csrf
             <div id="errors-list-login"></div>
             <div class="my-4">
+                <input type="email" name="email" placeholder="Your Email Address" class="form-control fontSize14px"
+                    value="{{ old('email') }}">
+                @if ($errors->has('email'))
+                    <span class="alert-danger">{{ $errors->first('email') }}</span>
+                @endif
+            </div>
+            <div class="my-4">
                 <input type="text" name="pin" placeholder="Recovery Pin" class="form-control fontSize14px"
                     id="">
                 @if ($errors->has('pin'))
-                    <span class="alert-danger">{{ $error->first('pin') }}</span>
+                    <span class="alert-danger">{{ $errors->first('pin') }}</span>
                 @endif
             </div>
             <div class="my-4">
                 <input type="password" name="password" placeholder="Insert Your new Password"
                     class="form-control fontSize14px" id="">
                 @if ($errors->has('password'))
-                    <span class="alert-danger">{{ $error->first('password') }}</span>
+                    <span class="alert-danger">{{ $errors->first('password') }}</span>
                 @endif
             </div>
             <div class="my-4">
